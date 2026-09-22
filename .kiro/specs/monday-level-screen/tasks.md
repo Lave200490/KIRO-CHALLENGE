@@ -10,7 +10,7 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
 
 ## Tasks
 
-- [ ] 1. Preparar la estructura HTML en `index.html`
+- [x] 1. Preparar la estructura HTML en `index.html`
   - Añadir el atributo `id="assembly-area"` al contenedor del área de ensamblaje ya existente.
   - Añadir el elemento `<span id="credits-display">0</span>` dentro del Contador_Créditos existente.
   - Añadir el elemento `<div id="error-message" class="hidden"></div>` inmediatamente debajo del área de ensamblaje.
@@ -19,24 +19,24 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
   - Verificar que `window.gameCredits = 0` está declarado en un `<script>` inline antes del script principal.
   - _Requirements: 4.1, 4.2, 4.3, 5.2, 9.1, 10.3_
 
-- [ ] 2. Implementar estado y constantes del puzzle
-  - [ ] 2.1 Definir `CORRECT_SEQUENCE` y `CREDITS_REWARD` como constantes globales en el bloque `<script>`
+- [x] 2. Implementar estado y constantes del puzzle
+  - [x] 2.1 Definir `CORRECT_SEQUENCE` y `CREDITS_REWARD` como constantes globales en el bloque `<script>`
     - Usar `Object.freeze` sobre `CORRECT_SEQUENCE` para evitar mutaciones accidentales.
     - Los cuatro bloques son: `block-1` "Definición de Requisitos", `block-2` "Diseño Técnico", `block-3` "Planificación de Implementación", `block-4` "Despliegue".
     - `CREDITS_REWARD = 250`.
     - _Requirements: 7.1, 7.3, 10.2_
 
-  - [ ] 2.2 Definir el objeto `PuzzleState` con campos `blocks` y `selectedIndex`
+  - [x] 2.2 Definir el objeto `PuzzleState` con campos `blocks` y `selectedIndex`
     - `blocks: []` — array mutable del orden actual de bloques.
     - `selectedIndex: null` — índice del bloque actualmente seleccionado.
     - _Requirements: 8.1, 8.2, 8.3_
 
-  - [ ] 2.3 Exponer `window.PuzzleModule` bajo la guarda `window.__TESTING__ === true`
+  - [x] 2.3 Exponer `window.PuzzleModule` bajo la guarda `window.__TESTING__ === true`
     - Exportar: `shuffleBlocks`, `validateSolution`, `swapBlocks`, `handleBlockClick`, `PuzzleState`, `CORRECT_SEQUENCE`, `CREDITS_REWARD`.
     - _Requirements: (soporte a tests — sin req. directo)_
 
-- [ ] 3. Implementar `shuffleBlocks` (función pura)
-  - [ ] 3.1 Implementar el algoritmo Fisher-Yates sobre una copia del array de entrada
+- [x] 3. Implementar `shuffleBlocks` (función pura)
+  - [x] 3.1 Implementar el algoritmo Fisher-Yates sobre una copia del array de entrada
     - No mutar el array original; retornar un nuevo array.
     - _Requirements: 7.2_
 
@@ -46,16 +46,16 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
     - Aserciones: longitud === 4, mismos `id`s, sin duplicados.
     - **Validates: Requirements 7.2**
 
-- [ ] 4. Implementar `renderBlocks`
-  - [ ] 4.1 Implementar la función `renderBlocks()` que lee `PuzzleState.blocks` y reconstruye el HTML en `#assembly-area`
+- [x] 4. Implementar `renderBlocks`
+  - [x] 4.1 Implementar la función `renderBlocks()` que lee `PuzzleState.blocks` y reconstruye el HTML en `#assembly-area`
     - Limpiar el contenedor antes de insertar.
     - Cada bloque genera un elemento con `data-index` y la clase `.block-item`.
     - Aplicar la clase `.block-selected` al bloque cuyo índice sea `PuzzleState.selectedIndex`.
     - Estilos: fondo oscuro, texto blanco/gris claro, borde violeta neón (`#6b21a8`), fuente ≥ 14 px.
     - _Requirements: 7.4, 7.5, 8.1, 8.5_
 
-- [ ] 5. Implementar `handleBlockClick` y `swapBlocks`
-  - [ ] 5.1 Implementar `swapBlocks(i, j)` que intercambia posiciones en `PuzzleState.blocks`
+- [x] 5. Implementar `handleBlockClick` y `swapBlocks`
+  - [x] 5.1 Implementar `swapBlocks(i, j)` que intercambia posiciones en `PuzzleState.blocks`
     - Validar que `i` y `j` estén en rango (0–3); emitir `console.error` y abortar si no.
     - Mutar el array de estado y llamar a `renderBlocks()`.
     - _Requirements: 8.2_
@@ -66,7 +66,7 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
     - Aserciones: posiciones intercambiadas, resto sin cambios, `selectedIndex === null`.
     - **Validates: Requirements 8.2**
 
-  - [ ] 5.3 Implementar `handleBlockClick(index)` con la máquina de estados
+  - [x] 5.3 Implementar `handleBlockClick(index)` con la máquina de estados
     - Si `selectedIndex === null` → seleccionar.
     - Si `selectedIndex === index` → deseleccionar (toggle).
     - Si `selectedIndex !== index` → llamar a `swapBlocks(selectedIndex, index)`, deseleccionar, llamar a `hideError()`.
@@ -85,11 +85,11 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
     - Aserción: `PuzzleState.blocks` contiene exactamente los 4 `id`s de `CORRECT_SEQUENCE`.
     - **Validates: Requirements 8.4, 11.2**
 
-- [ ] 6. Checkpoint — prueba parcial del puzzle
+- [x] 6. Checkpoint — prueba parcial del puzzle
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 7. Implementar `validateSolution`
-  - [ ] 7.1 Implementar `validateSolution()` como función pura que compara `PuzzleState.blocks` con `CORRECT_SEQUENCE` por `id`
+- [x] 7. Implementar `validateSolution`
+  - [x] 7.1 Implementar `validateSolution()` como función pura que compara `PuzzleState.blocks` con `CORRECT_SEQUENCE` por `id`
     - Retorna `true` solo si todos los `id`s coinciden posicionalmente.
     - _Requirements: 9.3_
 
@@ -99,17 +99,17 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
     - Aserción: `true` ↔ deep equal con `CORRECT_SEQUENCE`; `false` para las 23 restantes.
     - **Validates: Requirements 9.3**
 
-- [ ] 8. Implementar `showError`, `hideError` y `showSuccess`
-  - [ ] 8.1 Implementar `showError()` que muestra `#error-message` con el texto de error
+- [x] 8. Implementar `showError`, `hideError` y `showSuccess`
+  - [x] 8.1 Implementar `showError()` que muestra `#error-message` con el texto de error
     - Texto: `ERROR:: Error de especificación: secuencia lógica alterada`.
     - Estilo: texto rojo, fondo oscuro, tipografía monoespaciada (Tema_Terminal).
     - Debe aparecer dentro de los 300 ms siguientes a la validación.
     - _Requirements: 11.1, 11.4_
 
-  - [ ] 8.2 Implementar `hideError()` que oculta `#error-message`
+  - [x] 8.2 Implementar `hideError()` que oculta `#error-message`
     - _Requirements: 11.3_
 
-  - [ ] 8.3 Implementar `showSuccess()` que incrementa créditos y muestra el modal
+  - [x] 8.3 Implementar `showSuccess()` que incrementa créditos y muestra el modal
     - Leer `window.gameCredits`; si no está definido, inicializar a 0 y emitir `console.warn`.
     - Incrementar en `CREDITS_REWARD` (250) y actualizar `#credits-display` en ≤ 200 ms.
     - Mostrar `#modal-exito` dentro de los 300 ms siguientes a la validación.
@@ -139,14 +139,14 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
     - Aserción: `#error-message` oculto tras `handleBlockClick(i)` + `handleBlockClick(j)`.
     - **Validates: Requirements 11.3**
 
-- [ ] 9. Implementar `handleValidate` y registrar todos los event listeners en `initPuzzle`
-  - [ ] 9.1 Implementar `handleValidate()` como event handler del botón "Validar Solución"
+- [x] 9. Implementar `handleValidate` y registrar todos los event listeners en `initPuzzle`
+  - [x] 9.1 Implementar `handleValidate()` como event handler del botón "Validar Solución"
     - Llama a `validateSolution()` y enruta a `showSuccess()` o `showError()`.
     - Respuesta en ≤ 300 ms desde el clic.
     - Si `#validate-btn` no existe en el DOM, emitir `console.warn` y no registrar el listener.
     - _Requirements: 9.3, 9.5_
 
-  - [ ] 9.2 Implementar `initPuzzle()` que orquesta el arranque completo
+  - [x] 9.2 Implementar `initPuzzle()` que orquesta el arranque completo
     - Verificar que `#assembly-area` existe; abortar con `console.error` si no.
     - Llamar a `shuffleBlocks(CORRECT_SEQUENCE)` y guardar el resultado en `PuzzleState.blocks`.
     - Llamar a `renderBlocks()`.
@@ -155,17 +155,17 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
     - Registrar click listener en `#next-level-btn` para la navegación al nivel del martes.
     - _Requirements: 7.2, 9.2, 10.3, 10.5_
 
-  - [ ] 9.3 Invocar `initPuzzle()` desde el evento `DOMContentLoaded`
+  - [x] 9.3 Invocar `initPuzzle()` desde el evento `DOMContentLoaded`
     - _Requirements: 7.1, 7.2_
 
-- [ ] 10. Implementar la `Barra_Progreso` dinámica
-  - [ ] 10.1 Extraer las funciones puras `getDayName(date)` y `formatDate(date)` que leen la fecha del dispositivo
+- [x] 10. Implementar la `Barra_Progreso` dinámica
+  - [x] 10.1 Extraer las funciones puras `getDayName(date)` y `formatDate(date)` que leen la fecha del dispositivo
     - `formatDate` retorna la cadena `DD/M` (ej.: `07/6`).
     - `getDayName` retorna el nombre del día en español (ej.: `Lunes`).
     - Leer la fecha una sola vez con `new Date()` al inicio y pasarla como argumento.
     - _Requirements: 2.2, 2.3_
 
-  - [ ] 10.2 Aplicar los estilos de día activo, días pasados y días futuros en la `Barra_Progreso`
+  - [x] 10.2 Aplicar los estilos de día activo, días pasados y días futuros en la `Barra_Progreso`
     - Día activo: clase de resaltado (mayor peso tipográfico o indicador de subrayado).
     - Días futuros: opacidad reducida (Req 2.5).
     - _Requirements: 2.4, 2.5_
@@ -182,7 +182,7 @@ La suite de tests se ejecuta en Node.js con **Jest** + **fast-check** (instalado
     - Aserciones: clase activa solo en el día `d`; completados en `< d`; opacidad reducida en `> d`.
     - **Validates: Requirements 2.4, 2.5**
 
-- [ ] 11. Checkpoint final — integración completa
+- [x] 11. Checkpoint final — integración completa
   - Ensure all tests pass, ask the user if questions arise.
 
 ---

@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "ESLint Auto-fix on Save",
+      "trigger": "PostFileSave",
+      "description": "Runs ESLint with auto-fix every time a JS/TS file is saved, keeping code clean automatically.",
+      "matcher": "\\.(js|ts|jsx|tsx)$",
+      "action": {
+        "type": "command",
+        "command": "npx eslint --fix \"$KIRO_FILE_PATH\"",
+        "timeout": 30
+      }
+    }
+  ]
+}

@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CODE_QUEST — Semana de Retos</title>
+
+  <!-- Google Fonts: JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'neon-violet':       '#6b21a8',
+            'neon-violet-bright':'#a855f7',
+            'neon-violet-glow':  '#d8b4fe',
+          },
+          fontFamily: {
+            mono: ['"JetBrains Mono"', 'Consolas', 'monospace'],
+          },
+          boxShadow: {
+            'neon-sm': '0 0 6px 1px rgba(107,33,168,0.5)',
+            'neon-md': '0 0 14px 3px rgba(168,85,247,0.45)',
+          },
+          keyframes: {
+            blink: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
+            pulseViolet: {
+              '0%,100%': { boxShadow: '0 0 8px 2px rgba(107,33,168,0.4)' },
+              '50%':      { boxShadow: '0 0 20px 5px rgba(168,85,247,0.7)' },
+            },
+            flicker: {
+              '0%,97%,100%': { opacity: '1' },
+              '98%':          { opacity: '0.85' },
+              '99%':          { opacity: '0.95' },
+            },
+          },
+          animation: {
+            blink:        'blink 1s step-end infinite',
+            pulseViolet:  'pulseViolet 3s ease-in-out infinite',
+            flicker:      'flicker 5s infinite',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ─── Base ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      background: #000;
+      color: #e2e8f0;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    /* ─── CRT Scanlines ─────────────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.07) 2px,
+        rgba(0,0,0,0.07) 4px
+      );
+    }
+
+    /* ─── Scrollbar ─────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #3b0764; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #6b21a8; }
+
+    /* ─── Dot grid pattern ──────────────────────────────────── */
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(107,33,168,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(107,33,168,0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* ─── Glitch title ──────────────────────────────────────── */
+    @keyframes glitch {
+      0%   { clip-path: inset(0 0 100% 0); transform: skewX(0deg); }
+      10%  { clip-path: inset(10% 0 85% 0); transform: skewX(-2deg); }
+      20%  { clip-path: inset(50% 0 30% 0); transform: skewX(2deg); }
+      30%  { clip-path: inset(80% 0 5% 0); transform: skewX(0deg); }
+      40%  { clip-path: inset(0 0 100% 0); }
+      100% { clip-path: inset(0 0 100% 0); }
+    }
+
+    .glitch-wrapper { position: relative; display: inline-block; }
+    .glitch-layer {
+      position: absolute;
+      inset: 0;
+      color: #a855f7;
+      animation: glitch 6s infinite;
+      opacity: 0.6;
+    }
+
+    /* ─── Cursor blink ──────────────────────────────────────── */
+    .cursor::after {
+      content: '▋';
+      animation: blink 1s step-end infinite;
+      color: #a855f7;
+    }
+
+    /* ─── Pulse violet animation ────────────────────────────── */
+    @keyframes pulseViolet {
+      0%,100% { box-shadow: 0 0 8px 2px rgba(107,33,168,0.4); }
+      50%      { box-shadow: 0 0 20px 5px rgba(168,85,247,0.7); }
+    }
+    .animate-pulse-violet { animation: pulseViolet 3s ease-in-out infinite; }
+
+    /* ─── Flicker ────────────────────────────────────────────── */
+    @keyframes flicker {
+      0%,97%,100% { opacity: 1; }
+      98%          { opacity: 0.85; }
+      99%          { opacity: 0.95; }
+    }
+    .animate-flicker { animation: flicker 5s infinite; }
+
+    /* ─── Blink ──────────────────────────────────────────────── */
+    @keyframes blink {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0; }
+    }
+    .animate-blink { animation: blink 1s step-end infinite; }
+
+    /* ─── Corner brackets ───────────────────────────────────── */
+    .corner-bracket { position: relative; }
+    .corner-bracket::before,
+    .corner-bracket::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: #a855f7;
+      border-style: solid;
+    }
+    .corner-bracket::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .corner-bracket::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    /* ─── Block item styles ─────────────────────────────────── */
+    .block-item {
+      background: #0a000f;
+      border: 1px solid #6b21a8;
+      border-radius: 6px;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      color: #e2e8f0;
+      user-select: none;
+    }
+    .block-item:hover {
+      border-color: #a855f7;
+      box-shadow: 0 0 6px 1px rgba(107,33,168,0.5);
+    }
+    .block-item:focus-visible {
+      outline: 2px solid #a855f7;
+      outline-offset: 2px;
+    }
+    .block-selected {
+      border-color: #a855f7 !important;
+      background: rgba(168,85,247,0.15) !important;
+      box-shadow: 0 0 14px 3px rgba(168,85,247,0.45) !important;
+    }
+
+    /* ─── Day bar ───────────────────────────────────────────── */
+    .day-bar {
+      height: 4px;
+      border-radius: 2px;
+      background: #1a0030;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .day-bar.active {
+      background: #a855f7;
+      animation: pulseViolet 3s ease-in-out infinite;
+    }
+    .day-bar.completed {
+      background: #6b21a8;
+    }
+
+    /* ─── Textarea ──────────────────────────────────────────── */
+    #hook-editor {
+      background: #03000a;
+      border: 1px solid #6b21a8;
+      color: #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 1.7;
+      padding: 16px;
+      tab-size: 2;
+      resize: vertical;
+      min-height: 280px;
+      width: 100%;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    #hook-editor:focus {
+      border-color: #a855f7;
+      box-shadow: 0 0 6px 1px rgba(107,33,168,0.5);
+    }
+
+    /* ─── Console ───────────────────────────────────────────── */
+    #hook-console {
+      background: #03000a;
+      border: 1px solid #6b21a8;
+      min-height: 280px;
+      overflow-y: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 12px;
+      border-radius: 6px;
+      color: #94a3b8;
+    }
+
+    /* ─── Modal backdrop ────────────────────────────────────── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.hidden { display: none; }
+
+    /* ─── Fallback inline overrides (if Tailwind CDN fails) ─── */
+    #root-container {
+      background: #000;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+
+<body class="bg-black font-mono animate-flicker">
+<div id="root-container" style="background:#000;color:#fff;min-height:100vh;">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER — sticky top bar
+  ══════════════════════════════════════════════════════════════ -->
+  <header class="sticky top-0 z-50 border-b border-neon-violet"
+          style="background:#05000d; border-color:#6b21a8;">
+
+    <!-- Status line -->
+    <div class="flex items-center justify-between px-4 py-1 text-xs border-b"
+         style="border-color:#1a0030; color:#64748b;">
+      <span>code_quest_v2.1.0</span>
+      <span class="flex items-center gap-1">
+        <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        sistema operativo
+      </span>
+      <span>sesión::activa</span>
+    </div>
+
+    <!-- Main header row -->
+    <div class="flex items-center justify-between px-4 py-3 gap-4">
+
+      <!-- Left: Brand -->
+      <div class="flex items-center gap-3 min-w-fit">
+        <div class="w-9 h-9 rounded border flex items-center justify-center text-lg"
+             style="border-color:#6b21a8; background:#0a000f; color:#a855f7;">
+          &lt;/&gt;
+        </div>
+        <div>
+          <div class="text-sm font-bold tracking-widest" style="color:#d8b4fe;">CODE_QUEST</div>
+          <div class="text-xs" style="color:#64748b;">Semana de Retos</div>
+        </div>
+      </div>
+
+      <!-- Center: Weekly progress -->
+      <div class="flex-1 max-w-xs mx-auto">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-xs" style="color:#6b21a8;">progreso semanal</span>
+          <span class="text-xs font-bold" style="color:#a855f7;">DÍA 1 / 7</span>
+        </div>
+        <div class="flex gap-1 mb-1">
+          <!-- Day 0: LUN — active -->
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div id="day-bar-0" class="day-bar active w-full"></div>
+            <span id="day-label-0" class="text-xs font-bold" style="color:#a855f7;">LUN</span>
+          </div>
+          <!-- Day 1: MAR — locked -->
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div id="day-bar-1" class="day-bar w-full"></div>
+            <span id="day-label-1" class="text-xs" style="color:#334155;">MAR</span>
+          </div>
+          <!-- Day 2: MIÉ -->
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div id="day-bar-2" class="day-bar w-full"></div>
+            <span id="day-label-2" class="text-xs" style="color:#334155;">MIÉ</span>
+          </div>
+          <!-- Day 3: JUE -->
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div id="day-bar-3" class="day-bar w-full"></div>
+            <span id="day-label-3" class="text-xs" style="color:#334155;">JUE</span>
+          </div>
+          <!-- Day 4: VIE -->
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div id="day-bar-4" class="day-bar w-full"></div>
+            <span id="day-label-4" class="text-xs" style="color:#334155;">VIE</span>
+          </div>
+          <!-- Day 5: SÁB -->
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div id="day-bar-5" class="day-bar w-full"></div>
+            <span id="day-label-5" class="text-xs" style="color:#334155;">SÁB</span>
+          </div>
+          <!-- Day 6: DOM -->
+          <div class="flex-1 flex flex-col items-center gap-1">
+            <div id="day-bar-6" class="day-bar w-full"></div>
+            <span id="day-label-6" class="text-xs" style="color:#334155;">DOM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Credits -->
+      <div class="flex flex-col items-end min-w-fit">
+        <div class="text-xs mb-1 tracking-widest uppercase" style="color:#6b21a8;">Créditos</div>
+        <div class="flex items-center gap-2 px-3 py-1 rounded border"
+             style="border-color:#6b21a8; background:#0a000f;">
+          <span style="color:#a855f7;">⬡</span>
+          <span id="credits-display" class="text-lg font-bold tracking-widest"
+                style="color:#d8b4fe;">000</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active day stripe -->
+    <div id="active-day-stripe" class="flex items-center gap-3 px-4 py-1.5 text-xs"
+         style="background:#0a0015; border-top:1px solid #1a0030;">
+      <span class="flex items-center gap-1.5">
+        <span class="inline-block w-2 h-2 rounded-full animate-pulse" style="background:#a855f7;"></span>
+        <span class="font-bold uppercase tracking-widest" style="color:#a855f7;">
+          <span id="active-day-name">LUNES</span>
+        </span>
+      </span>
+      <span style="color:#334155;">//</span>
+      <span id="active-day-date" style="color:#94a3b8;">1/1</span>
+      <span class="ml-2 px-2 py-0.5 rounded text-xs font-bold uppercase tracking-widest"
+            style="background:#1a0030; color:#a855f7; border:1px solid #6b21a8;">activo</span>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN CONTENT
+  ══════════════════════════════════════════════════════════════ -->
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-10">
+
+    <!-- ───────────────────────────────────────────────────────
+         MONDAY SECTION
+    ──────────────────────────────────────────────────────────── -->
+    <section id="monday-section">
+
+      <!-- Section label -->
+      <div class="text-xs font-bold mb-3 tracking-widest" style="color:#6b21a8;">
+        // especificación del reto
+      </div>
+
+      <!-- Spec Card -->
+      <div id="spec-card" class="rounded-lg border corner-bracket"
+           style="border-color:#6b21a8; background:#05000d;">
+
+        <!-- Card header -->
+        <div class="flex flex-wrap items-start justify-between gap-3 px-5 py-4 border-b"
+             style="border-color:#1a0030;">
+          <div class="flex-1">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                    style="background:#1a0030; color:#a855f7; border:1px solid #6b21a8;">SPEC</span>
+              <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                    style="background:#022c22; color:#34d399; border:1px solid #065f46;">disponible</span>
+            </div>
+            <h2 class="text-lg font-bold mb-1 glitch-wrapper" style="color:#ffffff;">
+              <span>Desarrollo basado en especificaciones</span>
+              <span class="glitch-layer" aria-hidden="true">Desarrollo basado en especificaciones</span>
+            </h2>
+            <div class="flex flex-wrap items-center gap-3 text-xs" style="color:#64748b;">
+              <span style="color:#f59e0b;">★★☆</span>
+              <span style="color:#94a3b8;">intermedio</span>
+              <span style="color:#6b21a8;">·</span>
+              <span style="color:#a855f7;">+150 XP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card body -->
+        <div class="px-5 py-4 space-y-5">
+
+          <!-- Description -->
+          <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+            En este nivel deberás leer, interpretar y cumplir con precisión una
+            <span style="color:#d8b4fe;">especificación técnica</span> predefinida.
+            Tu código será evaluado contra criterios de aceptación: inputs esperados,
+            outputs requeridos y restricciones de implementación. La especificación es la ley.
+            Nada más, nada menos.
+          </p>
+
+          <!-- Objectives -->
+          <div>
+            <div class="text-xs font-bold mb-2 tracking-widest uppercase" style="color:#6b21a8;">
+              Objetivos
+            </div>
+            <ul class="space-y-1.5">
+              <li class="flex items-start gap-2 text-sm" style="color:#d1d5db;">
+                <span style="color:#a855f7; margin-top:2px;">◆</span>
+                Leer y comprender la especificación del módulo objetivo
+              </li>
+              <li class="flex items-start gap-2 text-sm" style="color:#d1d5db;">
+                <span style="color:#a855f7; margin-top:2px;">◆</span>
+                Ensamblar el código usando únicamente los bloques provistos
+              </li>
+              <li class="flex items-start gap-2 text-sm" style="color:#d1d5db;">
+                <span style="color:#a855f7; margin-top:2px;">◆</span>
+                Pasar los 3 criterios de aceptación sin errores
+              </li>
+              <li class="flex items-start gap-2 text-sm" style="color:#d1d5db;">
+                <span style="color:#a855f7; margin-top:2px;">◆</span>
+                Optimizar solución para maximizar créditos obtenidos
+              </li>
+            </ul>
+          </div>
+
+          <!-- Acceptance criteria table -->
+          <div>
+            <div class="text-xs font-bold mb-2 tracking-widest uppercase" style="color:#6b21a8;">
+              Criterios de Aceptación
+            </div>
+            <div class="rounded border overflow-hidden text-xs" style="border-color:#1a0030;">
+              <table class="w-full">
+                <thead>
+                  <tr style="background:#0a0015; color:#64748b;">
+                    <th class="px-3 py-2 text-left font-medium">ID</th>
+                    <th class="px-3 py-2 text-left font-medium">Criterio</th>
+                    <th class="px-3 py-2 text-left font-medium">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t" style="border-color:#1a0030;">
+                    <td class="px-3 py-2 font-bold" style="color:#a855f7;">AC-01</td>
+                    <td class="px-3 py-2" style="color:#94a3b8;">Input válido → output correcto</td>
+                    <td class="px-3 py-2">
+                      <span id="ac-01-status" class="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-widest"
+                            style="background:#1a0030; color:#64748b; border:1px solid #334155;">pendiente</span>
+                    </td>
+                  </tr>
+                  <tr class="border-t" style="border-color:#1a0030;">
+                    <td class="px-3 py-2 font-bold" style="color:#a855f7;">AC-02</td>
+                    <td class="px-3 py-2" style="color:#94a3b8;">Manejo de edge cases</td>
+                    <td class="px-3 py-2">
+                      <span id="ac-02-status" class="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-widest"
+                            style="background:#1a0030; color:#64748b; border:1px solid #334155;">pendiente</span>
+                    </td>
+                  </tr>
+                  <tr class="border-t" style="border-color:#1a0030;">
+                    <td class="px-3 py-2 font-bold" style="color:#a855f7;">AC-03</td>
+                    <td class="px-3 py-2" style="color:#94a3b8;">Complejidad O(n) o mejor</td>
+                    <td class="px-3 py-2">
+                      <span id="ac-03-status" class="px-2 py-0.5 rounded text-xs font-bold uppercase tracking-widest"
+                            style="background:#1a0030; color:#64748b; border:1px solid #334155;">pendiente</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Warning box -->
+          <div class="flex items-start gap-3 px-4 py-3 rounded border text-sm"
+               style="background:#0d0800; border-color:#78350f; color:#fbbf24;">
+            <span class="text-base mt-0.5" aria-hidden="true">⚠</span>
+            <span>Solo puedes usar los bloques de código disponibles en el área de ensamblaje.
+              No se permiten imports externos.</span>
+          </div>
+        </div>
+
+        <!-- Card footer -->
+        <div class="flex flex-wrap items-center gap-4 px-5 py-3 border-t text-xs"
+             style="border-color:#1a0030; color:#64748b;">
+          <span>⏱ ~30 min estimado</span>
+          <span style="color:#1a0030;">|</span>
+          <span>👤 solo</span>
+          <span style="color:#1a0030;">|</span>
+          <span style="color:#475569;">lunes_21_09.spec · rev.1</span>
+        </div>
+      </div>
+
+      <!-- Assembly Area -->
+      <div class="mt-6">
+        <div class="text-xs font-bold mb-3 tracking-widest" style="color:#6b21a8;">
+          // workspace
+        </div>
+
+        <div class="rounded-lg border grid-pattern corner-bracket"
+             style="border-color:#6b21a8; background:#05000d; min-height:40vh;">
+
+          <!-- Assembly header bar -->
+          <div class="flex items-center justify-between px-4 py-2.5 border-b rounded-t-lg"
+               style="border-color:#1a0030; background:#0a000f;">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full inline-block" style="background:#6b21a8;"></span>
+              <span class="text-sm font-bold tracking-wide" style="color:#a855f7;">
+                Área de Ensamblaje de Código
+              </span>
+            </div>
+            <span class="px-2 py-0.5 text-xs rounded tracking-widest uppercase"
+                  style="background:#1a0030; color:#64748b; border:1px solid #334155;">
+              puzzle activo
+            </span>
+          </div>
+
+          <!-- Blocks container -->
+          <div id="assembly-area" class="p-4 space-y-3" role="list" aria-label="Bloques de código del puzzle">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Error message -->
+          <div id="error-message" class="hidden mx-4 mb-2 px-4 py-2.5 rounded border text-sm font-mono"
+               style="background:#0d0000; border-color:#7f1d1d; color:#f87171;"
+               role="alert" aria-live="assertive">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- Validate button -->
+        <div class="mt-4 flex justify-center">
+          <button id="validate-btn"
+                  class="px-8 py-3 rounded border font-bold text-sm tracking-widest uppercase
+                         transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  style="background:#0a000f; border-color:#6b21a8; color:#d8b4fe;"
+                  onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)'; this.style.borderColor='#a855f7';"
+                  onmouseout="this.style.boxShadow=''; this.style.borderColor='#6b21a8';">
+            Validar Solución
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────────────────────────────────────────
+         TUESDAY SECTION
+    ──────────────────────────────────────────────────────────── -->
+    <section id="tuesday-section">
+
+      <div class="text-xs font-bold mb-3 tracking-widest" style="color:#334155;">
+        // martes 22/9
+      </div>
+
+      <!-- Locked state (shown initially) -->
+      <div id="tuesday-locked" class="rounded-lg border relative overflow-hidden"
+           style="border-color:#1a0030; background:#05000d; opacity:0.6;">
+        <!-- Lock overlay -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10"
+             style="background:rgba(0,0,0,0.6);">
+          <div class="text-5xl mb-3" aria-hidden="true">🔒</div>
+          <div class="px-3 py-1 text-xs font-bold rounded tracking-widest uppercase mb-2"
+               style="background:#1a0030; color:#64748b; border:1px solid #334155;">BLOQUEADO</div>
+          <p class="text-sm text-center px-6" style="color:#64748b;">
+            Completa el nivel del Lunes para desbloquear.
+          </p>
+        </div>
+        <!-- Blurred placeholder content -->
+        <div class="px-5 py-4 filter blur-sm select-none" aria-hidden="true">
+          <div class="h-6 rounded mb-4" style="background:#1a0030; width:60%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:80%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:70%;"></div>
+          <div class="h-4 rounded mb-6" style="background:#0f0020; width:75%;"></div>
+          <div class="h-32 rounded" style="background:#0a000f;"></div>
+        </div>
+      </div>
+
+      <!-- Unlocked state (hidden initially, shown after Monday solved) -->
+      <div id="tuesday-unlocked" class="hidden">
+
+        <!-- Spec card -->
+        <div class="rounded-lg border corner-bracket" style="border-color:#6b21a8; background:#05000d;">
+
+          <!-- Card header -->
+          <div class="flex flex-wrap items-start justify-between gap-3 px-5 py-4 border-b"
+               style="border-color:#1a0030;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#1c0a00; color:#fb923c; border:1px solid #7c2d12;">HOOKS</span>
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#022c22; color:#34d399; border:1px solid #065f46;">disponible</span>
+              </div>
+              <h2 class="text-lg font-bold mb-1 glitch-wrapper" style="color:#ffffff;">
+                <span>Martes 22/9 • Lecciones 3-4: Automatización con Hooks</span>
+                <span class="glitch-layer" aria-hidden="true">Martes 22/9 • Lecciones 3-4: Automatización con Hooks</span>
+              </h2>
+              <div class="flex flex-wrap items-center gap-3 text-xs" style="color:#64748b;">
+                <span style="color:#f59e0b;">★★☆</span>
+                <span style="color:#94a3b8;">Intermedio</span>
+                <span style="color:#6b21a8;">·</span>
+                <span style="color:#a855f7;">+250 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card body -->
+          <div class="px-5 py-4 space-y-5">
+
+            <!-- Description -->
+            <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+              En este nivel aprenderás a crear
+              <span style="color:#fb923c;">hooks de automatización</span> en Kiro.
+              Los hooks permiten ejecutar comandos automáticamente cuando ocurren eventos en el IDE
+              (guardar un archivo, ejecutar una tarea, etc.).
+              Configura el hook correctamente en formato JSON.
+            </p>
+
+            <!-- Two-column layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+              <!-- Left: JSON Editor -->
+              <div>
+                <div class="text-xs font-bold mb-2 tracking-widest" style="color:#6b21a8;">
+                  // editor: .kiro/hooks/eslint-hook.json
+                </div>
+                <textarea id="hook-editor"
+                          aria-label="Editor JSON del hook"
+                          class="focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                          spellcheck="false"
+>{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "ESLint Fix on Save",
+      "trigger": "PostFileSave",
+      "matcher": "\\.(ts|tsx)$",
+      "action": {
+        "type": "command",
+        "command": "npx eslint --fix {{file}}"
+      }
+    }
+  ]
+}</textarea>
+                <p class="mt-2 text-xs" style="color:#475569;">
+                  Edita el JSON. Los campos requeridos son: <span style="color:#a855f7;">version</span>,
+                  <span style="color:#a855f7;">hooks[].trigger</span> y
+                  <span style="color:#a855f7;">hooks[].action</span>
+                </p>
+              </div>
+
+              <!-- Right: Simulation console -->
+              <div>
+                <div class="text-xs font-bold mb-2 tracking-widest" style="color:#6b21a8;">
+                  // consola de simulación
+                </div>
+                <div id="hook-console" role="log" aria-label="Consola de simulación" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <!-- Tuesday error message -->
+            <div id="tuesday-error-message" class="hidden px-4 py-2.5 rounded border text-sm font-mono"
+                 style="background:#0d0000; border-color:#7f1d1d; color:#f87171;"
+                 role="alert" aria-live="assertive">
+              <!-- Filled by JS -->
+            </div>
+
+          </div>
+
+          <!-- Install button -->
+          <div class="px-5 pb-5">
+            <button id="install-hook-btn"
+                    class="w-full md:w-auto px-8 py-3 rounded border font-bold text-sm tracking-widest uppercase
+                           transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500 flex items-center gap-2 justify-center"
+                    style="background:#0a000f; border-color:#6b21a8; color:#d8b4fe;"
+                    onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)'; this.style.borderColor='#a855f7';"
+                    onmouseout="this.style.boxShadow=''; this.style.borderColor='#6b21a8';">
+              <span>⚡</span>
+              <span>Probar e Instalar Hook</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════════ -->
+  <footer class="mt-10 border-t py-4 px-4 text-center text-xs"
+          style="border-color:#1a0030; color:#334155;">
+    <span>code_quest © 2026</span>
+    <span class="mx-2" style="color:#1a0030;">·</span>
+    <span>v2.1.0</span>
+    <span class="mx-2" style="color:#1a0030;">·</span>
+    <span class="cursor"></span>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MONDAY SUCCESS MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-exito" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-exito-title">
+    <!-- Backdrop click to close -->
+    <div class="absolute inset-0" id="modal-exito-backdrop"></div>
+
+    <!-- Modal card -->
+    <div class="relative rounded-lg border w-full max-w-md p-6 space-y-4 z-10"
+         style="background:#05000d; border-color:#6b21a8; box-shadow:0 0 40px 8px rgba(107,33,168,0.4);">
+
+      <!-- Header -->
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">✓</span>
+        <h3 id="modal-exito-title" class="text-lg font-bold tracking-widest uppercase"
+            style="color:#34d399;">
+          SECUENCIA CORRECTA
+        </h3>
+      </div>
+
+      <!-- Body -->
+      <div class="space-y-2 text-sm" style="color:#94a3b8;">
+        <p>¡Excelente! Has dominado el flujo de desarrollo basado en especificaciones.</p>
+        <p class="font-bold" style="color:#a855f7;">+250 créditos añadidos</p>
+      </div>
+
+      <!-- Button -->
+      <button id="next-level-btn"
+              class="w-full py-3 rounded border font-bold text-sm tracking-widest uppercase
+                     transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style="background:#0a000f; border-color:#a855f7; color:#d8b4fe;"
+              onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
+              onmouseout="this.style.boxShadow='';">
+        Ir al nivel del Martes →
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TUESDAY SUCCESS MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-martes" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-martes-title">
+    <!-- Backdrop click to close -->
+    <div class="absolute inset-0" id="modal-martes-backdrop"></div>
+
+    <!-- Modal card -->
+    <div class="relative rounded-lg border w-full max-w-md p-6 space-y-4 z-10"
+         style="background:#05000d; border-color:#6b21a8; box-shadow:0 0 40px 8px rgba(107,33,168,0.4);">
+
+      <!-- Header -->
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">⚡</span>
+        <h3 id="modal-martes-title" class="text-lg font-bold tracking-widest uppercase"
+            style="color:#fbbf24;">
+          HOOK INSTALADO
+        </h3>
+      </div>
+
+      <!-- Body -->
+      <div class="space-y-2 text-sm" style="color:#94a3b8;">
+        <p>Has configurado correctamente tu primer hook de automatización. El hook se ejecutará
+           automáticamente cada vez que guardes un archivo TypeScript.</p>
+        <p class="font-bold" style="color:#a855f7;">+250 créditos añadidos</p>
+      </div>
+
+      <!-- Button -->
+      <button id="summary-btn"
+              class="w-full py-3 rounded border font-bold text-sm tracking-widest uppercase
+                     transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style="background:#0a000f; border-color:#a855f7; color:#d8b4fe;"
+              onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
+              onmouseout="this.style.boxShadow='';">
+        Ver resumen semanal →
+      </button>
+    </div>
+  </div>
+
+</div><!-- #root-container -->
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════════════ -->
+<script>
+  'use strict';
+
+  /* ─────────────────────────────────────────────────────────────
+     UTILITY: debounce
+  ───────────────────────────────────────────────────────────── */
+  function debounce(fn, delay) {
+    let t;
+    return (...a) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...a), delay);
+    };
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     GLOBAL CREDITS STATE
+  ───────────────────────────────────────────────────────────── */
+  let globalCredits = 0;
+
+  function updateCreditsDisplay() {
+    const el = document.getElementById('credits-display');
+    if (el) el.textContent = String(globalCredits).padStart(3, '0');
+  }
+
+  window.gameCredits = {
+    get: () => globalCredits,
+    add: (v) => {
+      globalCredits = Math.max(0, globalCredits + Math.floor(v));
+      updateCreditsDisplay();
+    },
+    subtract: (v) => {
+      globalCredits = Math.max(0, globalCredits - Math.floor(v));
+      updateCreditsDisplay();
+    },
+    set: (v) => {
+      globalCredits = Math.max(0, Math.floor(v));
+      updateCreditsDisplay();
+    },
+  };
+
+  /* ─────────────────────────────────────────────────────────────
+     DATE BAR — pure helpers
+  ───────────────────────────────────────────────────────────── */
+
+  /**
+   * Returns the Spanish day name for a given Date.
+   * Pure function — depends only on its argument.
+   * @param {Date} date
+   * @returns {string} e.g. 'Lunes'
+   */
+  function getDayName(date) {
+    const names = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+    return names[date.getDay()];
+  }
+
+  /**
+   * Returns the date formatted as DD/M (day zero-padded, month not padded).
+   * Pure function — depends only on its argument.
+   * @param {Date} date
+   * @returns {string} e.g. '07/6'
+   */
+  function formatDate(date) {
+    const day   = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1);
+    return `${day}/${month}`;
+  }
+
+  /**
+   * Read the current date once, update the active-day stripe text,
+   * and apply active / completed / default classes to the 7 day-bar elements.
+   *
+   * Bar index mapping (0 = LUN … 6 = DOM):
+   *   getDay()  0=Sun → bar 6
+   *             1=Mon → bar 0
+   *             2=Tue → bar 1
+   *             3=Wed → bar 2
+   *             4=Thu → bar 3
+   *             5=Fri → bar 4
+   *             6=Sat → bar 5
+   */
+  function updateDateBar() {
+    const now = new Date();
+
+    // Update stripe text
+    const stripe = document.getElementById('active-day-stripe');
+    if (stripe) {
+      const nameEl = stripe.querySelector('#active-day-name');
+      const dateEl = stripe.querySelector('#active-day-date');
+      if (nameEl) nameEl.textContent = getDayName(now).toUpperCase();
+      if (dateEl) dateEl.textContent = formatDate(now);
+    }
+
+    // Map JS getDay() → bar index (0=LUN … 6=DOM)
+    const dayToBar = [6, 0, 1, 2, 3, 4, 5]; // index = getDay() value
+    const activeBar = dayToBar[now.getDay()];
+
+    for (let i = 0; i < 7; i++) {
+      const bar = document.getElementById(`day-bar-${i}`);
+      const lbl = document.getElementById(`day-label-${i}`);
+      if (!bar) continue;
+
+      // Reset classes
+      bar.classList.remove('active', 'completed');
+
+      if (i < activeBar) {
+        // Past days → completed style
+        bar.classList.add('completed');
+        if (lbl) {
+          lbl.style.color      = '#6b21a8';
+          lbl.style.fontWeight = '';
+          lbl.style.opacity    = '';
+        }
+      } else if (i === activeBar) {
+        // Active day → pulsing neon violet
+        bar.classList.add('active');
+        if (lbl) {
+          lbl.style.color      = '#a855f7';
+          lbl.style.fontWeight = '700';
+          lbl.style.opacity    = '';
+        }
+      } else {
+        // Future days → dimmed / reduced opacity
+        if (lbl) {
+          lbl.style.color      = '#334155';
+          lbl.style.fontWeight = '';
+          lbl.style.opacity    = '0.5';
+        }
+      }
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     MONDAY PUZZLE
+  ───────────────────────────────────────────────────────────── */
+
+  /** @type {Array<{id:string, label:string, desc:string}>} */
+  const CORRECT_SEQUENCE = Object.freeze([
+    { id: 'block-1', label: 'Definición de Requisitos',        desc: 'Capturar y formalizar qué debe hacer el sistema' },
+    { id: 'block-2', label: 'Diseño Técnico',                  desc: 'Arquitectura, componentes y contratos de datos' },
+    { id: 'block-3', label: 'Planificación de Implementación', desc: 'Descomponer en tareas con dependencias claras' },
+    { id: 'block-4', label: 'Despliegue',                      desc: 'Entregar el artefacto al entorno de producción' },
+  ]);
+
+  const CREDITS_REWARD = 250;
+
+  /** Mutable puzzle state — single source of truth */
+  const PuzzleState = {
+    blocks: [],
+    selectedIndex: null,
+  };
+
+  /**
+   * Fisher-Yates shuffle — pure function, does not mutate input.
+   * @param {Array} arr
+   * @returns {Array} new shuffled array
+   */
+  function shuffleBlocks(arr) {
+    const copy = arr.map(b => Object.assign({}, b));
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  /**
+   * Rebuild the #assembly-area DOM from PuzzleState.blocks.
+   */
+  function renderBlocks() {
+    const area = document.getElementById('assembly-area');
+    if (!area) { console.error('[Puzzle] #assembly-area not found'); return; }
+
+    area.innerHTML = '';
+    PuzzleState.blocks.forEach((block, index) => {
+      const isSelected = PuzzleState.selectedIndex === index;
+
+      const div = document.createElement('div');
+      div.className = 'block-item' + (isSelected ? ' block-selected' : '');
+      div.setAttribute('data-index', index);
+      div.setAttribute('role', 'listitem');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      div.setAttribute('aria-label', `Bloque ${index + 1}: ${block.label}`);
+
+      div.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="
+            min-width:28px; height:28px; border-radius:50%;
+            background:${isSelected ? 'rgba(168,85,247,0.3)' : '#1a0030'};
+            border:1px solid ${isSelected ? '#a855f7' : '#6b21a8'};
+            display:flex; align-items:center; justify-content:center;
+            font-size:11px; font-weight:700; color:${isSelected ? '#d8b4fe' : '#a855f7'};
+            flex-shrink:0; margin-top:2px;
+          ">${index + 1}</div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px; color:#ffffff; margin-bottom:4px;">${block.label}</div>
+            <div style="font-size:12px; color:#64748b;">${block.desc}</div>
+          </div>
+          ${isSelected ? '<div style="color:#a855f7; font-size:18px; align-self:center;">◈</div>' : ''}
+        </div>
+      `;
+
+      area.appendChild(div);
+    });
+  }
+
+  /**
+   * Handle a click on block at position `index`.
+   * @param {number} index
+   */
+  function handleBlockClick(index) {
+    if (PuzzleState.selectedIndex === null) {
+      // Nothing selected → select this one
+      PuzzleState.selectedIndex = index;
+      renderBlocks();
+    } else if (PuzzleState.selectedIndex === index) {
+      // Same block clicked → deselect
+      PuzzleState.selectedIndex = null;
+      renderBlocks();
+    } else {
+      // Different block → swap
+      swapBlocks(PuzzleState.selectedIndex, index);
+      PuzzleState.selectedIndex = null;
+      hideError();
+      // renderBlocks is called inside swapBlocks
+    }
+  }
+
+  /**
+   * Swap blocks at positions i and j in PuzzleState.blocks.
+   * @param {number} i
+   * @param {number} j
+   */
+  function swapBlocks(i, j) {
+    if (i < 0 || j < 0 || i >= PuzzleState.blocks.length || j >= PuzzleState.blocks.length) {
+      console.error(`[Puzzle] swapBlocks: index out of range (${i}, ${j})`);
+      return;
+    }
+    [PuzzleState.blocks[i], PuzzleState.blocks[j]] = [PuzzleState.blocks[j], PuzzleState.blocks[i]];
+    renderBlocks();
+  }
+
+  /**
+   * Compare current block order against CORRECT_SEQUENCE.
+   * Pure function with respect to PuzzleState.
+   * @returns {boolean}
+   */
+  function validateSolution() {
+    return PuzzleState.blocks.every((block, idx) => block.id === CORRECT_SEQUENCE[idx].id);
+  }
+
+  /** Event handler for the Validate button. */
+  function handleValidate() {
+    if (validateSolution()) {
+      showSuccess();
+    } else {
+      showError();
+    }
+  }
+
+  /** Show the error message. */
+  function showError() {
+    const el = document.getElementById('error-message');
+    if (!el) return;
+    el.textContent = 'ERROR:: Error de especificación: secuencia lógica alterada';
+    el.classList.remove('hidden');
+  }
+
+  /** Hide the error message. */
+  function hideError() {
+    const el = document.getElementById('error-message');
+    if (el) el.classList.add('hidden');
+  }
+
+  /** Mark all AC badges as completed, add credits, show modal. */
+  function showSuccess() {
+    // Guard: initialize gameCredits if not defined
+    if (!window.gameCredits) {
+      console.warn('[Puzzle] window.gameCredits not defined — initializing to 0');
+      window.gameCredits = { get: () => 0, add: () => {}, subtract: () => {}, set: () => {} };
+    }
+
+    // Update credits
+    window.gameCredits.add(CREDITS_REWARD);
+
+    // Update AC badges
+    ['ac-01-status', 'ac-02-status', 'ac-03-status'].forEach(id => {
+      const badge = document.getElementById(id);
+      if (badge) {
+        badge.textContent = 'completado';
+        badge.style.background = '#022c22';
+        badge.style.color = '#34d399';
+        badge.style.borderColor = '#065f46';
+      }
+    });
+
+    // Show modal
+    const modal = document.getElementById('modal-exito');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  /** Initialize the puzzle: shuffle, render, attach listeners. */
+  function initPuzzle() {
+    const area = document.getElementById('assembly-area');
+    if (!area) {
+      console.error('[Puzzle] #assembly-area not found — aborting initPuzzle');
+      return;
+    }
+
+    // Shuffle blocks, guarantee result ≠ correct order with retry
+    let shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE));
+    let attempts = 0;
+    while (
+      shuffled.every((b, i) => b.id === CORRECT_SEQUENCE[i].id) &&
+      attempts < 10
+    ) {
+      shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE));
+      attempts++;
+    }
+    PuzzleState.blocks = shuffled;
+    PuzzleState.selectedIndex = null;
+
+    renderBlocks();
+
+    // Event delegation for block clicks
+    area.addEventListener('click', (e) => {
+      const blockEl = e.target.closest('[data-index]');
+      if (!blockEl) return;
+      const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) handleBlockClick(idx);
+    });
+
+    // Keyboard support for block selection
+    area.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const blockEl = e.target.closest('[data-index]');
+        if (!blockEl) return;
+        e.preventDefault();
+        const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) handleBlockClick(idx);
+      }
+    });
+
+    // Validate button
+    const validateBtn = document.getElementById('validate-btn');
+    if (validateBtn) {
+      validateBtn.addEventListener('click', handleValidate);
+    } else {
+      console.warn('[Puzzle] #validate-btn not found');
+    }
+
+    // Next-level button — navigate to Tuesday on click
+    const nextLevelBtn = document.getElementById('next-level-btn');
+    if (nextLevelBtn) {
+      nextLevelBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-exito');
+        if (modal) modal.classList.add('hidden');
+        const tuesdaySec = document.getElementById('tuesday-section');
+        if (tuesdaySec) tuesdaySec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(unlockTuesday, 300);
+      });
+    } else {
+      console.warn('[Puzzle] #next-level-btn not found');
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     MONDAY MODAL EVENT HANDLERS
+  ───────────────────────────────────────────────────────────── */
+  function initMondayModalHandlers() {
+    const modal    = document.getElementById('modal-exito');
+    const backdrop = document.getElementById('modal-exito-backdrop');
+
+    function closeModal() {
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Backdrop click closes the modal
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     TUESDAY LEVEL
+  ───────────────────────────────────────────────────────────── */
+
+  /**
+   * Validate the hook JSON string.
+   * Logs messages to the console and returns true/false.
+   * @param {string} jsonStr
+   * @returns {boolean}
+   */
+  function validateHookJSON(jsonStr) {
+    let parsed;
+    try {
+      parsed = JSON.parse(jsonStr);
+    } catch (err) {
+      addConsoleLine(`[ERROR] JSON inválido: ${err.message}`, 'error');
+      return false;
+    }
+
+    if (!parsed.version) {
+      addConsoleLine('[ERROR] Falta campo requerido: "version"', 'error');
+      return false;
+    }
+
+    if (!Array.isArray(parsed.hooks) || parsed.hooks.length === 0) {
+      addConsoleLine('[ERROR] Falta campo requerido: "hooks" (array)', 'error');
+      return false;
+    }
+
+    if (!parsed.hooks[0].trigger) {
+      addConsoleLine('[ERROR] Falta campo requerido: hooks[0].trigger', 'error');
+      return false;
+    }
+
+    if (!parsed.hooks[0].action || typeof parsed.hooks[0].action !== 'object') {
+      addConsoleLine('[ERROR] Falta campo requerido: hooks[0].action', 'error');
+      return false;
+    }
+
+    // All checks passed
+    addConsoleLine('[OK] JSON válido — estructura de hook detectada', 'ok');
+    addConsoleLine(`[INFO] trigger: ${parsed.hooks[0].trigger}`, 'info');
+    addConsoleLine(`[INFO] action.type: ${parsed.hooks[0].action.type || 'no definido'}`, 'info');
+    addConsoleLine(`[INFO] matcher: ${parsed.hooks[0].matcher || 'no definido'}`, 'info');
+    return true;
+  }
+
+  /**
+   * Append a timestamped line to #hook-console.
+   * @param {string} text
+   * @param {'info'|'ok'|'error'|'warn'} type
+   */
+  function addConsoleLine(text, type = 'info') {
+    const console_ = document.getElementById('hook-console');
+    if (!console_) return;
+
+    const now = new Date();
+    const hh  = String(now.getHours()).padStart(2, '0');
+    const mm  = String(now.getMinutes()).padStart(2, '0');
+    const ss  = String(now.getSeconds()).padStart(2, '0');
+    const ts  = `[${hh}:${mm}:${ss}]`;
+
+    const colorMap = {
+      info:  '#94a3b8',
+      ok:    '#34d399',
+      error: '#f87171',
+      warn:  '#fbbf24',
+    };
+    const color = colorMap[type] || colorMap.info;
+
+    const line = document.createElement('div');
+    line.style.color  = color;
+    line.style.marginBottom = '4px';
+    line.style.lineHeight = '1.5';
+    line.textContent = `${ts} ${text}`;
+    console_.appendChild(line);
+    console_.scrollTop = console_.scrollHeight;
+  }
+
+  /** Handle the "Probar e Instalar Hook" button click. */
+  function handleInstallHook() {
+    const el = document.getElementById('tuesday-error-message');
+    if (el) el.classList.add('hidden');
+
+    const jsonStr = document.getElementById('hook-editor').value;
+    const valid = validateHookJSON(jsonStr);
+
+    if (valid) {
+      addConsoleLine('[✓] Hook instalado correctamente en .kiro/hooks/eslint-hook.json', 'ok');
+      addConsoleLine('[✓] Trigger registrado: PostFileSave', 'ok');
+      addConsoleLine('[✓] Matcher activo: \\.(ts|tsx)$', 'ok');
+      addConsoleLine('[✓] +250 créditos acreditados', 'ok');
+      window.gameCredits.add(250);
+      showTuesdaySuccess();
+    } else {
+      if (el) {
+        el.textContent = 'ERROR:: Configuración de hook inválida — revisa la estructura JSON';
+        el.classList.remove('hidden');
+      }
+      addConsoleLine('[ERROR] Instalación fallida — estructura inválida', 'error');
+    }
+  }
+
+  /** Show the Tuesday success modal. */
+  function showTuesdaySuccess() {
+    const modal = document.getElementById('modal-martes');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  /** Unlock Tuesday level UI. */
+  function unlockTuesday() {
+    // 1. Swap locked → unlocked card
+    const locked   = document.getElementById('tuesday-locked');
+    const unlocked = document.getElementById('tuesday-unlocked');
+    if (locked)   locked.classList.add('hidden');
+    if (unlocked) unlocked.classList.remove('hidden');
+
+    // 2. Update section label color
+    const sectionLabel = document.querySelector('#tuesday-section > div:first-child');
+    if (sectionLabel) sectionLabel.style.color = '#6b21a8';
+
+    // 3. Update day bars:
+    //    day-bar-0 → completed (solid violet, no pulse)
+    //    day-bar-1 → active (neon violet, pulsing)
+    const bar0 = document.getElementById('day-bar-0');
+    const lbl0 = document.getElementById('day-label-0');
+    if (bar0) {
+      bar0.classList.remove('active');
+      bar0.classList.add('completed');
+    }
+    if (lbl0) {
+      lbl0.style.color = '#6b21a8';
+    }
+
+    const bar1 = document.getElementById('day-bar-1');
+    const lbl1 = document.getElementById('day-label-1');
+    if (bar1) {
+      bar1.classList.add('active');
+    }
+    if (lbl1) {
+      lbl1.style.color = '#a855f7';
+      lbl1.style.fontWeight = '700';
+    }
+
+    // 4. Update active day stripe
+    const stripe = document.getElementById('active-day-stripe');
+    if (stripe) {
+      const nameEl = stripe.querySelector('#active-day-name');
+      const dateEl = stripe.querySelector('#active-day-date');
+      if (nameEl) nameEl.textContent = 'MARTES';
+      if (dateEl) dateEl.textContent = '22/9';
+    }
+
+    // 5. Initialize console
+    const cons = document.getElementById('hook-console');
+    if (cons) cons.innerHTML = '';
+    addConsoleLine('> Sistema de hooks inicializado', 'info');
+    addConsoleLine('> Esperando configuración válida...', 'info');
+    addConsoleLine('> _', 'info');
+
+    // 6. Attach input listener on #hook-editor (debounced 400ms)
+    const editor = document.getElementById('hook-editor');
+    if (editor) {
+      const debouncedValidate = debounce(() => {
+        validateHookJSON(editor.value);
+      }, 400);
+
+      editor.addEventListener('input', () => {
+        // Hide tuesday error while typing
+        const errEl = document.getElementById('tuesday-error-message');
+        if (errEl) errEl.classList.add('hidden');
+        debouncedValidate();
+      });
+    }
+
+    // 7. Attach click listener on install button
+    const installBtn = document.getElementById('install-hook-btn');
+    if (installBtn) {
+      installBtn.addEventListener('click', handleInstallHook);
+    }
+  }
+
+  /** Initialize Tuesday modal handlers (backdrop + summary button). */
+  function initTuesdayModalHandlers() {
+    const modal    = document.getElementById('modal-martes');
+    const backdrop = document.getElementById('modal-martes-backdrop');
+    const summBtn  = document.getElementById('summary-btn');
+
+    function closeModal() {
+      if (modal) modal.classList.add('hidden');
+    }
+
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    if (summBtn) {
+      summBtn.addEventListener('click', () => {
+        closeModal();
+        // Show brief completion message in Tuesday section
+        const unlocked = document.getElementById('tuesday-unlocked');
+        if (unlocked) {
+          const existing = document.getElementById('tuesday-complete-msg');
+          if (!existing) {
+            const msg = document.createElement('div');
+            msg.id = 'tuesday-complete-msg';
+            msg.className = 'mt-4 px-4 py-3 rounded border text-sm font-bold';
+            msg.style.background = '#022c22';
+            msg.style.borderColor = '#065f46';
+            msg.style.color = '#34d399';
+            msg.textContent = '✓ Semana completada — has dominado los fundamentos de especificaciones y hooks. ¡Hasta la próxima semana!';
+            unlocked.appendChild(msg);
+          }
+        }
+      });
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     EXPOSE PuzzleModule FOR TESTING
+  ───────────────────────────────────────────────────────────── */
+  if (window.__TESTING__) {
+    window.PuzzleModule = {
+      shuffleBlocks,
+      validateSolution,
+      swapBlocks,
+      handleBlockClick,
+      PuzzleState,
+      CORRECT_SEQUENCE,
+      CREDITS_REWARD,
+      getDayName,
+      formatDate,
+    };
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     INIT
+  ───────────────────────────────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCreditsDisplay();
+    updateDateBar();
+    initPuzzle();
+    initMondayModalHandlers();
+    initTuesdayModalHandlers();
+  });
+</script>
+</body>
+</html>

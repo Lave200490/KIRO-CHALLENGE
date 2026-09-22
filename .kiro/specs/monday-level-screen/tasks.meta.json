@@ -1,0 +1,384 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Preparar la estructura HTML en `index.html`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088435316
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088454193
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088502826
+      }
+    ],
+    "2.1 Definir `CORRECT_SEQUENCE` y `CREDITS_REWARD` como constantes globales en el bloque `<script>`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088436968
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088455663
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088503775
+      }
+    ],
+    "2.2 Definir el objeto `PuzzleState` con campos `blocks` y `selectedIndex`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088437611
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088456003
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088504403
+      }
+    ],
+    "2.3 Exponer `window.PuzzleModule` bajo la guarda `window.__TESTING__ === true`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088438119
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088507908
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088840511
+      }
+    ],
+    "3.1 Implementar el algoritmo Fisher-Yates sobre una copia del array de entrada": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088439201
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088508505
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088841139
+      }
+    ],
+    "4.1 Implementar la función `renderBlocks()` que lee `PuzzleState.blocks` y reconstruye el HTML en `#assembly-area`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088439566
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088844298
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088870682
+      }
+    ],
+    "5.1 Implementar `swapBlocks(i, j)` que intercambia posiciones en `PuzzleState.blocks`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088440074
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088880346
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088921768
+      }
+    ],
+    "5.3 Implementar `handleBlockClick(index)` con la máquina de estados": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088440638
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088880819
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088922172
+      }
+    ],
+    "6. Checkpoint — prueba parcial del puzzle": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088441002
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088927202
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088998166
+      }
+    ],
+    "7.1 Implementar `validateSolution()` como función pura que compara `PuzzleState.blocks` con `CORRECT_SEQUENCE` por `id`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088441387
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088928330
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088998578
+      }
+    ],
+    "8.1 Implementar `showError()` que muestra `#error-message` con el texto de error": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088442271
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089002187
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089354822
+      }
+    ],
+    "8.2 Implementar `hideError()` que oculta `#error-message`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088442671
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089003154
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089355694
+      }
+    ],
+    "8.3 Implementar `showSuccess()` que incrementa créditos y muestra el modal": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088443397
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089003826
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089356279
+      }
+    ],
+    "9.1 Implementar `handleValidate()` como event handler del botón \"Validar Solución\"": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088443871
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089361519
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089441281
+      }
+    ],
+    "9.2 Implementar `initPuzzle()` que orquesta el arranque completo": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088445067
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089362130
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089442222
+      }
+    ],
+    "9.3 Invocar `initPuzzle()` desde el evento `DOMContentLoaded`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088445481
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089362732
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089442838
+      }
+    ],
+    "10.1 Extraer las funciones puras `getDayName(date)` y `formatDate(date)` que leen la fecha del dispositivo": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088445894
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089447634
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089525038
+      }
+    ],
+    "10.2 Aplicar los estilos de día activo, días pasados y días futuros en la `Barra_Progreso`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088446337
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089448600
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089526078
+      }
+    ],
+    "11. Checkpoint final — integración completa": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088446648
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089529802
+      },
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790090189865
+      }
+    ],
+    "2. Implementar estado y constantes del puzzle": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088840642
+      }
+    ],
+    "3. Implementar `shuffleBlocks` (función pura)": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088841378
+      }
+    ],
+    "4. Implementar `renderBlocks`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088870798
+      }
+    ],
+    "5. Implementar `handleBlockClick` y `swapBlocks`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088922800
+      }
+    ],
+    "7. Implementar `validateSolution`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790088998888
+      }
+    ],
+    "8. Implementar `showError`, `hideError` y `showSuccess`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089356789
+      }
+    ],
+    "9. Implementar `handleValidate` y registrar todos los event listeners en `initPuzzle`": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089443067
+      }
+    ],
+    "10. Implementar la `Barra_Progreso` dinámica": [
+      {
+        "executionId": "d2e9574c-840a-4bf5-b820-4a6270878502",
+        "chatSessionId": "sess_b51daf88-b79c-486a-b5d9-e02891d1fdd3",
+        "timestamp": 1790089526451
+      }
+    ]
+  }
+}
