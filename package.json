@@ -2,7 +2,7 @@
   "name": "challenge-kiro",
   "version": "1.0.0",
   "private": true,
-  "description": "CODE_QUEST — Monday level puzzle tests",
+  "description": "CODE_QUEST — Semana de Retos: 7 puzzles de ordenamiento de bloques con property-based testing",
   "scripts": {
     "test": "jest --runInBand"
   },

@@ -1,0 +1,40 @@
+# Dependencias de Node.js
+node_modules/
+
+# Variables de entorno y secretos
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cobertura de tests
+coverage/
+
+# Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales de editores
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Archivos de build/output
+dist/
+build/
+out/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
