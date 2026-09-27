@@ -65,6 +65,46 @@ const MINIMAL_DOM = `
     <button id="summary-btn"></button>
   </div>
   <div id="modal-exito-backdrop"></div>
+
+  <div id="assembly-area-miercoles" role="list"></div>
+  <div id="error-message-miercoles" class="hidden"></div>
+  <button id="validate-btn-miercoles">Validar Solución</button>
+  <div id="modal-miercoles" class="hidden">
+    <div id="modal-miercoles-backdrop"></div>
+    <button id="next-level-btn-miercoles"></button>
+  </div>
+
+  <div id="assembly-area-jueves" role="list"></div>
+  <div id="error-message-jueves" class="hidden"></div>
+  <button id="validate-btn-jueves">Validar Solución</button>
+  <div id="modal-jueves" class="hidden">
+    <div id="modal-jueves-backdrop"></div>
+    <button id="next-level-btn-jueves"></button>
+  </div>
+
+  <div id="assembly-area-viernes" role="list"></div>
+  <div id="error-message-viernes" class="hidden"></div>
+  <button id="validate-btn-viernes">Validar Solución</button>
+  <div id="modal-viernes" class="hidden">
+    <div id="modal-viernes-backdrop"></div>
+    <button id="next-level-btn-viernes"></button>
+  </div>
+
+  <div id="assembly-area-sabado" role="list"></div>
+  <div id="error-message-sabado" class="hidden"></div>
+  <button id="validate-btn-sabado">Validar Solución</button>
+  <div id="modal-sabado" class="hidden">
+    <div id="modal-sabado-backdrop"></div>
+    <button id="next-level-btn-sabado"></button>
+  </div>
+
+  <div id="assembly-area-domingo" role="list"></div>
+  <div id="error-message-domingo" class="hidden"></div>
+  <button id="validate-btn-domingo">Validar Solución</button>
+  <div id="modal-domingo" class="hidden">
+    <div id="modal-domingo-backdrop"></div>
+    <button id="finish-btn-domingo"></button>
+  </div>
 `;
 
 // ─── Bootstrap ─────────────────────────────────────────────────────────────
@@ -613,6 +653,581 @@ describe('Property 1 — date display matches device date', () => {
           const expectedDay   = String(d.getDate()).padStart(2, '0');
           const expectedMonth = String(d.getMonth() + 1);
           expect(formatDate(d)).toBe(`${expectedDay}/${expectedMonth}`);
+        }
+      ),
+      { numRuns: 100 }
+    );
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// HELPERS FOR NEW DAYS
+// ══════════════════════════════════════════════════════════════════════════
+
+const pmMiercoles = () => window.PuzzleModule_miercoles;
+const pmJueves    = () => window.PuzzleModule_jueves;
+const pmViernes   = () => window.PuzzleModule_viernes;
+const pmSabado    = () => window.PuzzleModule_sabado;
+const pmDomingo   = () => window.PuzzleModule_domingo;
+
+function resetState_miercoles() {
+  const { PuzzleState, CORRECT_SEQUENCE } = pmMiercoles();
+  PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+  PuzzleState.selectedIndex = null;
+  const errorEl = document.getElementById('error-message-miercoles');
+  if (errorEl) errorEl.classList.add('hidden');
+  const modal = document.getElementById('modal-miercoles');
+  if (modal) modal.classList.add('hidden');
+}
+
+function resetState_jueves() {
+  const { PuzzleState, CORRECT_SEQUENCE } = pmJueves();
+  PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+  PuzzleState.selectedIndex = null;
+  const errorEl = document.getElementById('error-message-jueves');
+  if (errorEl) errorEl.classList.add('hidden');
+  const modal = document.getElementById('modal-jueves');
+  if (modal) modal.classList.add('hidden');
+}
+
+function resetState_viernes() {
+  const { PuzzleState, CORRECT_SEQUENCE } = pmViernes();
+  PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+  PuzzleState.selectedIndex = null;
+  const errorEl = document.getElementById('error-message-viernes');
+  if (errorEl) errorEl.classList.add('hidden');
+  const modal = document.getElementById('modal-viernes');
+  if (modal) modal.classList.add('hidden');
+}
+
+function resetState_sabado() {
+  const { PuzzleState, CORRECT_SEQUENCE } = pmSabado();
+  PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+  PuzzleState.selectedIndex = null;
+  const errorEl = document.getElementById('error-message-sabado');
+  if (errorEl) errorEl.classList.add('hidden');
+  const modal = document.getElementById('modal-sabado');
+  if (modal) modal.classList.add('hidden');
+}
+
+function resetState_domingo() {
+  const { PuzzleState, CORRECT_SEQUENCE } = pmDomingo();
+  PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+  PuzzleState.selectedIndex = null;
+  const errorEl = document.getElementById('error-message-domingo');
+  if (errorEl) errorEl.classList.add('hidden');
+  const modal = document.getElementById('modal-domingo');
+  if (modal) modal.classList.add('hidden');
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// MIÉRCOLES
+// ══════════════════════════════════════════════════════════════════════════
+
+describe('Miércoles — PuzzleModule availability', () => {
+  test('window.PuzzleModule_miercoles is exposed under __TESTING__', () => {
+    expect(window.PuzzleModule_miercoles).toBeDefined();
+  });
+
+  test('exports all expected members', () => {
+    const {
+      shuffleBlocks, validateSolution, swapBlocks, handleBlockClick,
+      PuzzleState, CORRECT_SEQUENCE, CREDITS_REWARD,
+    } = pmMiercoles();
+    expect(typeof shuffleBlocks).toBe('function');
+    expect(typeof validateSolution).toBe('function');
+    expect(typeof swapBlocks).toBe('function');
+    expect(typeof handleBlockClick).toBe('function');
+    expect(Array.isArray(CORRECT_SEQUENCE)).toBe(true);
+    expect(typeof CREDITS_REWARD).toBe('number');
+    expect(PuzzleState).toBeDefined();
+  });
+});
+
+describe('Miércoles — CORRECT_SEQUENCE', () => {
+  test('has exactly 4 blocks with the expected ids', () => {
+    const { CORRECT_SEQUENCE } = pmMiercoles();
+    expect(CORRECT_SEQUENCE).toHaveLength(4);
+    expect(CORRECT_SEQUENCE.map(b => b.id)).toEqual([
+      'mie-block-1', 'mie-block-2', 'mie-block-3', 'mie-block-4',
+    ]);
+  });
+
+  test('has the expected labels', () => {
+    const labels = pmMiercoles().CORRECT_SEQUENCE.map(b => b.label);
+    expect(labels).toContain('Análisis');
+    expect(labels).toContain('Desarrollo');
+    expect(labels).toContain('Pruebas');
+    expect(labels).toContain('Mantenimiento');
+  });
+
+  test('CREDITS_REWARD is 250', () => {
+    expect(pmMiercoles().CREDITS_REWARD).toBe(250);
+  });
+});
+
+describe('Miércoles — validateSolution', () => {
+  afterEach(resetState_miercoles);
+
+  test('returns true when blocks match CORRECT_SEQUENCE', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmMiercoles();
+    PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+    expect(validateSolution()).toBe(true);
+  });
+
+  test('returns false for reversed order', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmMiercoles();
+    PuzzleState.blocks = [...CORRECT_SEQUENCE].reverse().map(b => ({ ...b }));
+    expect(validateSolution()).toBe(false);
+  });
+});
+
+describe('Miércoles — swapBlocks', () => {
+  beforeEach(resetState_miercoles);
+
+  test('swaps two positions correctly', () => {
+    const { PuzzleState, swapBlocks } = pmMiercoles();
+    const b0 = PuzzleState.blocks[0].id;
+    const b2 = PuzzleState.blocks[2].id;
+    swapBlocks(0, 2);
+    expect(PuzzleState.blocks[0].id).toBe(b2);
+    expect(PuzzleState.blocks[2].id).toBe(b0);
+  });
+
+  test('no-op and console.error on out-of-range index', () => {
+    const { PuzzleState, swapBlocks } = pmMiercoles();
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const before = PuzzleState.blocks.map(b => b.id);
+    swapBlocks(0, 10);
+    expect(PuzzleState.blocks.map(b => b.id)).toEqual(before);
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+});
+
+describe('Property — Miércoles validateSolution is correct for all permutations', () => {
+  test('validates all permutations correctly', () => {
+    fc.assert(
+      fc.property(
+        fc.shuffledSubarray([0, 1, 2, 3], { minLength: 4, maxLength: 4 }),
+        (perm) => {
+          const mod = pmMiercoles();
+          mod.PuzzleState.blocks = perm.map(idx => ({ ...mod.CORRECT_SEQUENCE[idx] }));
+          mod.PuzzleState.selectedIndex = null;
+          const isCorrect = perm.every((idx, pos) => idx === pos);
+          expect(mod.validateSolution()).toBe(isCorrect);
+        }
+      ),
+      { numRuns: 100 }
+    );
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// JUEVES
+// ══════════════════════════════════════════════════════════════════════════
+
+describe('Jueves — PuzzleModule availability', () => {
+  test('window.PuzzleModule_jueves is exposed under __TESTING__', () => {
+    expect(window.PuzzleModule_jueves).toBeDefined();
+  });
+
+  test('exports all expected members', () => {
+    const {
+      shuffleBlocks, validateSolution, swapBlocks, handleBlockClick,
+      PuzzleState, CORRECT_SEQUENCE, CREDITS_REWARD,
+    } = pmJueves();
+    expect(typeof shuffleBlocks).toBe('function');
+    expect(typeof validateSolution).toBe('function');
+    expect(typeof swapBlocks).toBe('function');
+    expect(typeof handleBlockClick).toBe('function');
+    expect(Array.isArray(CORRECT_SEQUENCE)).toBe(true);
+    expect(typeof CREDITS_REWARD).toBe('number');
+    expect(PuzzleState).toBeDefined();
+  });
+});
+
+describe('Jueves — CORRECT_SEQUENCE', () => {
+  test('has exactly 4 blocks with the expected ids', () => {
+    const { CORRECT_SEQUENCE } = pmJueves();
+    expect(CORRECT_SEQUENCE).toHaveLength(4);
+    expect(CORRECT_SEQUENCE.map(b => b.id)).toEqual([
+      'jue-block-1', 'jue-block-2', 'jue-block-3', 'jue-block-4',
+    ]);
+  });
+
+  test('has the expected labels', () => {
+    const labels = pmJueves().CORRECT_SEQUENCE.map(b => b.label);
+    expect(labels).toContain('Commit');
+    expect(labels).toContain('Build');
+    expect(labels).toContain('Test');
+    expect(labels).toContain('Deploy');
+  });
+
+  test('CREDITS_REWARD is 250', () => {
+    expect(pmJueves().CREDITS_REWARD).toBe(250);
+  });
+});
+
+describe('Jueves — validateSolution', () => {
+  afterEach(resetState_jueves);
+
+  test('returns true when blocks match CORRECT_SEQUENCE', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmJueves();
+    PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+    expect(validateSolution()).toBe(true);
+  });
+
+  test('returns false for reversed order', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmJueves();
+    PuzzleState.blocks = [...CORRECT_SEQUENCE].reverse().map(b => ({ ...b }));
+    expect(validateSolution()).toBe(false);
+  });
+});
+
+describe('Jueves — swapBlocks', () => {
+  beforeEach(resetState_jueves);
+
+  test('swaps two positions correctly', () => {
+    const { PuzzleState, swapBlocks } = pmJueves();
+    const b0 = PuzzleState.blocks[0].id;
+    const b3 = PuzzleState.blocks[3].id;
+    swapBlocks(0, 3);
+    expect(PuzzleState.blocks[0].id).toBe(b3);
+    expect(PuzzleState.blocks[3].id).toBe(b0);
+  });
+
+  test('no-op and console.error on out-of-range index', () => {
+    const { PuzzleState, swapBlocks } = pmJueves();
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const before = PuzzleState.blocks.map(b => b.id);
+    swapBlocks(1, 99);
+    expect(PuzzleState.blocks.map(b => b.id)).toEqual(before);
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+});
+
+describe('Property — Jueves validateSolution is correct for all permutations', () => {
+  test('validates all permutations correctly', () => {
+    fc.assert(
+      fc.property(
+        fc.shuffledSubarray([0, 1, 2, 3], { minLength: 4, maxLength: 4 }),
+        (perm) => {
+          const mod = pmJueves();
+          mod.PuzzleState.blocks = perm.map(idx => ({ ...mod.CORRECT_SEQUENCE[idx] }));
+          mod.PuzzleState.selectedIndex = null;
+          const isCorrect = perm.every((idx, pos) => idx === pos);
+          expect(mod.validateSolution()).toBe(isCorrect);
+        }
+      ),
+      { numRuns: 100 }
+    );
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// VIERNES
+// ══════════════════════════════════════════════════════════════════════════
+
+describe('Viernes — PuzzleModule availability', () => {
+  test('window.PuzzleModule_viernes is exposed under __TESTING__', () => {
+    expect(window.PuzzleModule_viernes).toBeDefined();
+  });
+
+  test('exports all expected members', () => {
+    const {
+      shuffleBlocks, validateSolution, swapBlocks, handleBlockClick,
+      PuzzleState, CORRECT_SEQUENCE, CREDITS_REWARD,
+    } = pmViernes();
+    expect(typeof shuffleBlocks).toBe('function');
+    expect(typeof validateSolution).toBe('function');
+    expect(typeof swapBlocks).toBe('function');
+    expect(typeof handleBlockClick).toBe('function');
+    expect(Array.isArray(CORRECT_SEQUENCE)).toBe(true);
+    expect(typeof CREDITS_REWARD).toBe('number');
+    expect(PuzzleState).toBeDefined();
+  });
+});
+
+describe('Viernes — CORRECT_SEQUENCE', () => {
+  test('has exactly 4 blocks with the expected ids', () => {
+    const { CORRECT_SEQUENCE } = pmViernes();
+    expect(CORRECT_SEQUENCE).toHaveLength(4);
+    expect(CORRECT_SEQUENCE.map(b => b.id)).toEqual([
+      'vie-block-1', 'vie-block-2', 'vie-block-3', 'vie-block-4',
+    ]);
+  });
+
+  test('has the expected labels', () => {
+    const labels = pmViernes().CORRECT_SEQUENCE.map(b => b.label);
+    expect(labels).toContain('Cliente');
+    expect(labels).toContain('Controlador');
+    expect(labels).toContain('Servicio');
+    expect(labels).toContain('Repositorio');
+  });
+
+  test('CREDITS_REWARD is 250', () => {
+    expect(pmViernes().CREDITS_REWARD).toBe(250);
+  });
+});
+
+describe('Viernes — validateSolution', () => {
+  afterEach(resetState_viernes);
+
+  test('returns true when blocks match CORRECT_SEQUENCE', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmViernes();
+    PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+    expect(validateSolution()).toBe(true);
+  });
+
+  test('returns false for reversed order', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmViernes();
+    PuzzleState.blocks = [...CORRECT_SEQUENCE].reverse().map(b => ({ ...b }));
+    expect(validateSolution()).toBe(false);
+  });
+});
+
+describe('Viernes — swapBlocks', () => {
+  beforeEach(resetState_viernes);
+
+  test('swaps two positions correctly', () => {
+    const { PuzzleState, swapBlocks } = pmViernes();
+    const b1 = PuzzleState.blocks[1].id;
+    const b3 = PuzzleState.blocks[3].id;
+    swapBlocks(1, 3);
+    expect(PuzzleState.blocks[1].id).toBe(b3);
+    expect(PuzzleState.blocks[3].id).toBe(b1);
+  });
+
+  test('no-op and console.error on out-of-range index', () => {
+    const { PuzzleState, swapBlocks } = pmViernes();
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const before = PuzzleState.blocks.map(b => b.id);
+    swapBlocks(0, -1);
+    expect(PuzzleState.blocks.map(b => b.id)).toEqual(before);
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+});
+
+describe('Property — Viernes validateSolution is correct for all permutations', () => {
+  test('validates all permutations correctly', () => {
+    fc.assert(
+      fc.property(
+        fc.shuffledSubarray([0, 1, 2, 3], { minLength: 4, maxLength: 4 }),
+        (perm) => {
+          const mod = pmViernes();
+          mod.PuzzleState.blocks = perm.map(idx => ({ ...mod.CORRECT_SEQUENCE[idx] }));
+          mod.PuzzleState.selectedIndex = null;
+          const isCorrect = perm.every((idx, pos) => idx === pos);
+          expect(mod.validateSolution()).toBe(isCorrect);
+        }
+      ),
+      { numRuns: 100 }
+    );
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// SÁBADO
+// ══════════════════════════════════════════════════════════════════════════
+
+describe('Sábado — PuzzleModule availability', () => {
+  test('window.PuzzleModule_sabado is exposed under __TESTING__', () => {
+    expect(window.PuzzleModule_sabado).toBeDefined();
+  });
+
+  test('exports all expected members', () => {
+    const {
+      shuffleBlocks, validateSolution, swapBlocks, handleBlockClick,
+      PuzzleState, CORRECT_SEQUENCE, CREDITS_REWARD,
+    } = pmSabado();
+    expect(typeof shuffleBlocks).toBe('function');
+    expect(typeof validateSolution).toBe('function');
+    expect(typeof swapBlocks).toBe('function');
+    expect(typeof handleBlockClick).toBe('function');
+    expect(Array.isArray(CORRECT_SEQUENCE)).toBe(true);
+    expect(typeof CREDITS_REWARD).toBe('number');
+    expect(PuzzleState).toBeDefined();
+  });
+});
+
+describe('Sábado — CORRECT_SEQUENCE', () => {
+  test('has exactly 4 blocks with the expected ids', () => {
+    const { CORRECT_SEQUENCE } = pmSabado();
+    expect(CORRECT_SEQUENCE).toHaveLength(4);
+    expect(CORRECT_SEQUENCE.map(b => b.id)).toEqual([
+      'sab-block-1', 'sab-block-2', 'sab-block-3', 'sab-block-4',
+    ]);
+  });
+
+  test('has the expected labels', () => {
+    const labels = pmSabado().CORRECT_SEQUENCE.map(b => b.label);
+    expect(labels).toContain('Login');
+    expect(labels).toContain('Verificación');
+    expect(labels).toContain('Emisión');
+    expect(labels).toContain('Autorización');
+  });
+
+  test('CREDITS_REWARD is 250', () => {
+    expect(pmSabado().CREDITS_REWARD).toBe(250);
+  });
+});
+
+describe('Sábado — validateSolution', () => {
+  afterEach(resetState_sabado);
+
+  test('returns true when blocks match CORRECT_SEQUENCE', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmSabado();
+    PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+    expect(validateSolution()).toBe(true);
+  });
+
+  test('returns false for reversed order', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmSabado();
+    PuzzleState.blocks = [...CORRECT_SEQUENCE].reverse().map(b => ({ ...b }));
+    expect(validateSolution()).toBe(false);
+  });
+});
+
+describe('Sábado — swapBlocks', () => {
+  beforeEach(resetState_sabado);
+
+  test('swaps two positions correctly', () => {
+    const { PuzzleState, swapBlocks } = pmSabado();
+    const b0 = PuzzleState.blocks[0].id;
+    const b1 = PuzzleState.blocks[1].id;
+    swapBlocks(0, 1);
+    expect(PuzzleState.blocks[0].id).toBe(b1);
+    expect(PuzzleState.blocks[1].id).toBe(b0);
+  });
+
+  test('no-op and console.error on out-of-range index', () => {
+    const { PuzzleState, swapBlocks } = pmSabado();
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const before = PuzzleState.blocks.map(b => b.id);
+    swapBlocks(2, 10);
+    expect(PuzzleState.blocks.map(b => b.id)).toEqual(before);
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+});
+
+describe('Property — Sábado validateSolution is correct for all permutations', () => {
+  test('validates all permutations correctly', () => {
+    fc.assert(
+      fc.property(
+        fc.shuffledSubarray([0, 1, 2, 3], { minLength: 4, maxLength: 4 }),
+        (perm) => {
+          const mod = pmSabado();
+          mod.PuzzleState.blocks = perm.map(idx => ({ ...mod.CORRECT_SEQUENCE[idx] }));
+          mod.PuzzleState.selectedIndex = null;
+          const isCorrect = perm.every((idx, pos) => idx === pos);
+          expect(mod.validateSolution()).toBe(isCorrect);
+        }
+      ),
+      { numRuns: 100 }
+    );
+  });
+});
+
+// ══════════════════════════════════════════════════════════════════════════
+// DOMINGO
+// ══════════════════════════════════════════════════════════════════════════
+
+describe('Domingo — PuzzleModule availability', () => {
+  test('window.PuzzleModule_domingo is exposed under __TESTING__', () => {
+    expect(window.PuzzleModule_domingo).toBeDefined();
+  });
+
+  test('exports all expected members', () => {
+    const {
+      shuffleBlocks, validateSolution, swapBlocks, handleBlockClick,
+      PuzzleState, CORRECT_SEQUENCE, CREDITS_REWARD,
+    } = pmDomingo();
+    expect(typeof shuffleBlocks).toBe('function');
+    expect(typeof validateSolution).toBe('function');
+    expect(typeof swapBlocks).toBe('function');
+    expect(typeof handleBlockClick).toBe('function');
+    expect(Array.isArray(CORRECT_SEQUENCE)).toBe(true);
+    expect(typeof CREDITS_REWARD).toBe('number');
+    expect(PuzzleState).toBeDefined();
+  });
+});
+
+describe('Domingo — CORRECT_SEQUENCE', () => {
+  test('has exactly 4 blocks with the expected ids', () => {
+    const { CORRECT_SEQUENCE } = pmDomingo();
+    expect(CORRECT_SEQUENCE).toHaveLength(4);
+    expect(CORRECT_SEQUENCE.map(b => b.id)).toEqual([
+      'dom-block-1', 'dom-block-2', 'dom-block-3', 'dom-block-4',
+    ]);
+  });
+
+  test('has the expected labels', () => {
+    const labels = pmDomingo().CORRECT_SEQUENCE.map(b => b.label);
+    expect(labels).toContain('Reproducción');
+    expect(labels).toContain('Diagnóstico');
+    expect(labels).toContain('Corrección');
+    expect(labels).toContain('Verificación');
+  });
+
+  test('CREDITS_REWARD is 250', () => {
+    expect(pmDomingo().CREDITS_REWARD).toBe(250);
+  });
+});
+
+describe('Domingo — validateSolution', () => {
+  afterEach(resetState_domingo);
+
+  test('returns true when blocks match CORRECT_SEQUENCE', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmDomingo();
+    PuzzleState.blocks = CORRECT_SEQUENCE.map(b => ({ ...b }));
+    expect(validateSolution()).toBe(true);
+  });
+
+  test('returns false for reversed order', () => {
+    const { PuzzleState, CORRECT_SEQUENCE, validateSolution } = pmDomingo();
+    PuzzleState.blocks = [...CORRECT_SEQUENCE].reverse().map(b => ({ ...b }));
+    expect(validateSolution()).toBe(false);
+  });
+});
+
+describe('Domingo — swapBlocks', () => {
+  beforeEach(resetState_domingo);
+
+  test('swaps two positions correctly', () => {
+    const { PuzzleState, swapBlocks } = pmDomingo();
+    const b2 = PuzzleState.blocks[2].id;
+    const b3 = PuzzleState.blocks[3].id;
+    swapBlocks(2, 3);
+    expect(PuzzleState.blocks[2].id).toBe(b3);
+    expect(PuzzleState.blocks[3].id).toBe(b2);
+  });
+
+  test('no-op and console.error on out-of-range index', () => {
+    const { PuzzleState, swapBlocks } = pmDomingo();
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const before = PuzzleState.blocks.map(b => b.id);
+    swapBlocks(0, 5);
+    expect(PuzzleState.blocks.map(b => b.id)).toEqual(before);
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+});
+
+describe('Property — Domingo validateSolution is correct for all permutations', () => {
+  test('validates all permutations correctly', () => {
+    fc.assert(
+      fc.property(
+        fc.shuffledSubarray([0, 1, 2, 3], { minLength: 4, maxLength: 4 }),
+        (perm) => {
+          const mod = pmDomingo();
+          mod.PuzzleState.blocks = perm.map(idx => ({ ...mod.CORRECT_SEQUENCE[idx] }));
+          mod.PuzzleState.selectedIndex = null;
+          const isCorrect = perm.every((idx, pos) => idx === pos);
+          expect(mod.validateSolution()).toBe(isCorrect);
         }
       ),
       { numRuns: 100 }

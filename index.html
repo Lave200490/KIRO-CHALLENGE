@@ -558,6 +558,7 @@
     <!-- ───────────────────────────────────────────────────────
          TUESDAY SECTION
     ──────────────────────────────────────────────────────────── -->
+
     <section id="tuesday-section">
 
       <div class="text-xs font-bold mb-3 tracking-widest" style="color:#334155;">
@@ -695,6 +696,482 @@
       </div>
 
     </section>
+
+    <!-- ───────────────────────────────────────────────────────
+         WEDNESDAY SECTION
+    ──────────────────────────────────────────────────────────── -->
+    <section id="wednesday-section">
+
+      <div class="text-xs font-bold mb-3 tracking-widest" style="color:#334155;">
+        // miércoles 24/9
+      </div>
+
+      <!-- Locked state -->
+      <div id="wednesday-locked" class="rounded-lg border relative overflow-hidden"
+           style="border-color:#1a0030; background:#05000d; opacity:0.6;">
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10"
+             style="background:rgba(0,0,0,0.6);">
+          <div class="text-5xl mb-3" aria-hidden="true">🔒</div>
+          <div class="px-3 py-1 text-xs font-bold rounded tracking-widest uppercase mb-2"
+               style="background:#1a0030; color:#64748b; border:1px solid #334155;">BLOQUEADO</div>
+          <p class="text-sm text-center px-6" style="color:#64748b;">
+            Completa el nivel anterior para desbloquear.
+          </p>
+        </div>
+        <div class="px-5 py-4 filter blur-sm select-none" aria-hidden="true">
+          <div class="h-6 rounded mb-4" style="background:#1a0030; width:60%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:80%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:70%;"></div>
+          <div class="h-4 rounded mb-6" style="background:#0f0020; width:75%;"></div>
+          <div class="h-32 rounded" style="background:#0a000f;"></div>
+        </div>
+      </div>
+
+      <!-- Unlocked state -->
+      <div id="wednesday-unlocked" class="hidden">
+        <div class="rounded-lg border corner-bracket" style="border-color:#6b21a8; background:#05000d;">
+
+          <div class="flex flex-wrap items-start justify-between gap-3 px-5 py-4 border-b"
+               style="border-color:#1a0030;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#1a0030; color:#a855f7; border:1px solid #6b21a8;">SPEC</span>
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#022c22; color:#34d399; border:1px solid #065f46;">disponible</span>
+              </div>
+              <h2 class="text-lg font-bold mb-1 glitch-wrapper" style="color:#ffffff;">
+                <span>Miércoles 24/9 • Ciclo de vida del Software</span>
+                <span class="glitch-layer" aria-hidden="true">Miércoles 24/9 • Ciclo de vida del Software</span>
+              </h2>
+              <div class="flex flex-wrap items-center gap-3 text-xs" style="color:#64748b;">
+                <span style="color:#f59e0b;">★★☆</span>
+                <span style="color:#94a3b8;">intermedio</span>
+                <span style="color:#6b21a8;">·</span>
+                <span style="color:#a855f7;">+250 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-4 space-y-5">
+            <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+              Ordena las fases del <span style="color:#d8b4fe;">ciclo de vida del software</span> en la secuencia correcta.
+              Cada fase depende de la anterior para garantizar un desarrollo de calidad.
+            </p>
+
+            <div class="mt-4">
+              <div class="rounded-lg border grid-pattern corner-bracket"
+                   style="border-color:#6b21a8; background:#05000d; min-height:40vh;">
+                <div class="flex items-center justify-between px-4 py-2.5 border-b rounded-t-lg"
+                     style="border-color:#1a0030; background:#0a000f;">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full inline-block" style="background:#6b21a8;"></span>
+                    <span class="text-sm font-bold tracking-wide" style="color:#a855f7;">Área de Ensamblaje de Código</span>
+                  </div>
+                  <span class="px-2 py-0.5 text-xs rounded tracking-widest uppercase"
+                        style="background:#1a0030; color:#64748b; border:1px solid #334155;">puzzle activo</span>
+                </div>
+                <div id="assembly-area-miercoles" class="p-4 space-y-3" role="list" aria-label="Bloques de código del puzzle Miércoles"></div>
+                <div id="error-message-miercoles" class="hidden mx-4 mb-2 px-4 py-2.5 rounded border text-sm font-mono"
+                     style="background:#0d0000; border-color:#7f1d1d; color:#f87171;"
+                     role="alert" aria-live="assertive"></div>
+              </div>
+              <div class="mt-4 flex justify-center">
+                <button id="validate-btn-miercoles"
+                        class="px-8 py-3 rounded border font-bold text-sm tracking-widest uppercase transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        style="background:#0a000f; border-color:#6b21a8; color:#d8b4fe;"
+                        onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)'; this.style.borderColor='#a855f7';"
+                        onmouseout="this.style.boxShadow=''; this.style.borderColor='#6b21a8';">
+                  Validar Solución
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ───────────────────────────────────────────────────────
+         THURSDAY SECTION
+    ──────────────────────────────────────────────────────────── -->
+    <section id="thursday-section">
+
+      <div class="text-xs font-bold mb-3 tracking-widest" style="color:#334155;">
+        // jueves 25/9
+      </div>
+
+      <!-- Locked state -->
+      <div id="thursday-locked" class="rounded-lg border relative overflow-hidden"
+           style="border-color:#1a0030; background:#05000d; opacity:0.6;">
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10"
+             style="background:rgba(0,0,0,0.6);">
+          <div class="text-5xl mb-3" aria-hidden="true">🔒</div>
+          <div class="px-3 py-1 text-xs font-bold rounded tracking-widest uppercase mb-2"
+               style="background:#1a0030; color:#64748b; border:1px solid #334155;">BLOQUEADO</div>
+          <p class="text-sm text-center px-6" style="color:#64748b;">
+            Completa el nivel anterior para desbloquear.
+          </p>
+        </div>
+        <div class="px-5 py-4 filter blur-sm select-none" aria-hidden="true">
+          <div class="h-6 rounded mb-4" style="background:#1a0030; width:60%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:80%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:70%;"></div>
+          <div class="h-4 rounded mb-6" style="background:#0f0020; width:75%;"></div>
+          <div class="h-32 rounded" style="background:#0a000f;"></div>
+        </div>
+      </div>
+
+      <!-- Unlocked state -->
+      <div id="thursday-unlocked" class="hidden">
+        <div class="rounded-lg border corner-bracket" style="border-color:#6b21a8; background:#05000d;">
+
+          <div class="flex flex-wrap items-start justify-between gap-3 px-5 py-4 border-b"
+               style="border-color:#1a0030;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#1a0030; color:#a855f7; border:1px solid #6b21a8;">SPEC</span>
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#022c22; color:#34d399; border:1px solid #065f46;">disponible</span>
+              </div>
+              <h2 class="text-lg font-bold mb-1 glitch-wrapper" style="color:#ffffff;">
+                <span>Jueves 25/9 • Pipeline de CI/CD</span>
+                <span class="glitch-layer" aria-hidden="true">Jueves 25/9 • Pipeline de CI/CD</span>
+              </h2>
+              <div class="flex flex-wrap items-center gap-3 text-xs" style="color:#64748b;">
+                <span style="color:#f59e0b;">★★☆</span>
+                <span style="color:#94a3b8;">intermedio</span>
+                <span style="color:#6b21a8;">·</span>
+                <span style="color:#a855f7;">+250 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-4 space-y-5">
+            <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+              Ordena las etapas del <span style="color:#d8b4fe;">pipeline de CI/CD</span> en el orden correcto.
+              Un pipeline bien configurado garantiza entregas rápidas y seguras.
+            </p>
+
+            <div class="mt-4">
+              <div class="rounded-lg border grid-pattern corner-bracket"
+                   style="border-color:#6b21a8; background:#05000d; min-height:40vh;">
+                <div class="flex items-center justify-between px-4 py-2.5 border-b rounded-t-lg"
+                     style="border-color:#1a0030; background:#0a000f;">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full inline-block" style="background:#6b21a8;"></span>
+                    <span class="text-sm font-bold tracking-wide" style="color:#a855f7;">Área de Ensamblaje de Código</span>
+                  </div>
+                  <span class="px-2 py-0.5 text-xs rounded tracking-widest uppercase"
+                        style="background:#1a0030; color:#64748b; border:1px solid #334155;">puzzle activo</span>
+                </div>
+                <div id="assembly-area-jueves" class="p-4 space-y-3" role="list" aria-label="Bloques de código del puzzle Jueves"></div>
+                <div id="error-message-jueves" class="hidden mx-4 mb-2 px-4 py-2.5 rounded border text-sm font-mono"
+                     style="background:#0d0000; border-color:#7f1d1d; color:#f87171;"
+                     role="alert" aria-live="assertive"></div>
+              </div>
+              <div class="mt-4 flex justify-center">
+                <button id="validate-btn-jueves"
+                        class="px-8 py-3 rounded border font-bold text-sm tracking-widest uppercase transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        style="background:#0a000f; border-color:#6b21a8; color:#d8b4fe;"
+                        onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)'; this.style.borderColor='#a855f7';"
+                        onmouseout="this.style.boxShadow=''; this.style.borderColor='#6b21a8';">
+                  Validar Solución
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ───────────────────────────────────────────────────────
+         FRIDAY SECTION
+    ──────────────────────────────────────────────────────────── -->
+    <section id="friday-section">
+
+      <div class="text-xs font-bold mb-3 tracking-widest" style="color:#334155;">
+        // viernes 26/9
+      </div>
+
+      <!-- Locked state -->
+      <div id="friday-locked" class="rounded-lg border relative overflow-hidden"
+           style="border-color:#1a0030; background:#05000d; opacity:0.6;">
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10"
+             style="background:rgba(0,0,0,0.6);">
+          <div class="text-5xl mb-3" aria-hidden="true">🔒</div>
+          <div class="px-3 py-1 text-xs font-bold rounded tracking-widest uppercase mb-2"
+               style="background:#1a0030; color:#64748b; border:1px solid #334155;">BLOQUEADO</div>
+          <p class="text-sm text-center px-6" style="color:#64748b;">
+            Completa el nivel anterior para desbloquear.
+          </p>
+        </div>
+        <div class="px-5 py-4 filter blur-sm select-none" aria-hidden="true">
+          <div class="h-6 rounded mb-4" style="background:#1a0030; width:60%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:80%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:70%;"></div>
+          <div class="h-4 rounded mb-6" style="background:#0f0020; width:75%;"></div>
+          <div class="h-32 rounded" style="background:#0a000f;"></div>
+        </div>
+      </div>
+
+      <!-- Unlocked state -->
+      <div id="friday-unlocked" class="hidden">
+        <div class="rounded-lg border corner-bracket" style="border-color:#6b21a8; background:#05000d;">
+
+          <div class="flex flex-wrap items-start justify-between gap-3 px-5 py-4 border-b"
+               style="border-color:#1a0030;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#1a0030; color:#a855f7; border:1px solid #6b21a8;">SPEC</span>
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#022c22; color:#34d399; border:1px solid #065f46;">disponible</span>
+              </div>
+              <h2 class="text-lg font-bold mb-1 glitch-wrapper" style="color:#ffffff;">
+                <span>Viernes 26/9 • Modelo de capas de una API REST</span>
+                <span class="glitch-layer" aria-hidden="true">Viernes 26/9 • Modelo de capas de una API REST</span>
+              </h2>
+              <div class="flex flex-wrap items-center gap-3 text-xs" style="color:#64748b;">
+                <span style="color:#f59e0b;">★★☆</span>
+                <span style="color:#94a3b8;">intermedio</span>
+                <span style="color:#6b21a8;">·</span>
+                <span style="color:#a855f7;">+250 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-4 space-y-5">
+            <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+              Ordena las capas del <span style="color:#d8b4fe;">modelo de una API REST</span> desde el cliente hasta la base de datos.
+              Cada capa tiene una responsabilidad única y bien definida.
+            </p>
+
+            <div class="mt-4">
+              <div class="rounded-lg border grid-pattern corner-bracket"
+                   style="border-color:#6b21a8; background:#05000d; min-height:40vh;">
+                <div class="flex items-center justify-between px-4 py-2.5 border-b rounded-t-lg"
+                     style="border-color:#1a0030; background:#0a000f;">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full inline-block" style="background:#6b21a8;"></span>
+                    <span class="text-sm font-bold tracking-wide" style="color:#a855f7;">Área de Ensamblaje de Código</span>
+                  </div>
+                  <span class="px-2 py-0.5 text-xs rounded tracking-widest uppercase"
+                        style="background:#1a0030; color:#64748b; border:1px solid #334155;">puzzle activo</span>
+                </div>
+                <div id="assembly-area-viernes" class="p-4 space-y-3" role="list" aria-label="Bloques de código del puzzle Viernes"></div>
+                <div id="error-message-viernes" class="hidden mx-4 mb-2 px-4 py-2.5 rounded border text-sm font-mono"
+                     style="background:#0d0000; border-color:#7f1d1d; color:#f87171;"
+                     role="alert" aria-live="assertive"></div>
+              </div>
+              <div class="mt-4 flex justify-center">
+                <button id="validate-btn-viernes"
+                        class="px-8 py-3 rounded border font-bold text-sm tracking-widest uppercase transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        style="background:#0a000f; border-color:#6b21a8; color:#d8b4fe;"
+                        onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)'; this.style.borderColor='#a855f7';"
+                        onmouseout="this.style.boxShadow=''; this.style.borderColor='#6b21a8';">
+                  Validar Solución
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ───────────────────────────────────────────────────────
+         SATURDAY SECTION
+    ──────────────────────────────────────────────────────────── -->
+    <section id="saturday-section">
+
+      <div class="text-xs font-bold mb-3 tracking-widest" style="color:#334155;">
+        // sábado 27/9
+      </div>
+
+      <!-- Locked state -->
+      <div id="saturday-locked" class="rounded-lg border relative overflow-hidden"
+           style="border-color:#1a0030; background:#05000d; opacity:0.6;">
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10"
+             style="background:rgba(0,0,0,0.6);">
+          <div class="text-5xl mb-3" aria-hidden="true">🔒</div>
+          <div class="px-3 py-1 text-xs font-bold rounded tracking-widest uppercase mb-2"
+               style="background:#1a0030; color:#64748b; border:1px solid #334155;">BLOQUEADO</div>
+          <p class="text-sm text-center px-6" style="color:#64748b;">
+            Completa el nivel anterior para desbloquear.
+          </p>
+        </div>
+        <div class="px-5 py-4 filter blur-sm select-none" aria-hidden="true">
+          <div class="h-6 rounded mb-4" style="background:#1a0030; width:60%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:80%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:70%;"></div>
+          <div class="h-4 rounded mb-6" style="background:#0f0020; width:75%;"></div>
+          <div class="h-32 rounded" style="background:#0a000f;"></div>
+        </div>
+      </div>
+
+      <!-- Unlocked state -->
+      <div id="saturday-unlocked" class="hidden">
+        <div class="rounded-lg border corner-bracket" style="border-color:#6b21a8; background:#05000d;">
+
+          <div class="flex flex-wrap items-start justify-between gap-3 px-5 py-4 border-b"
+               style="border-color:#1a0030;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#1a0030; color:#a855f7; border:1px solid #6b21a8;">SPEC</span>
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#022c22; color:#34d399; border:1px solid #065f46;">disponible</span>
+              </div>
+              <h2 class="text-lg font-bold mb-1 glitch-wrapper" style="color:#ffffff;">
+                <span>Sábado 27/9 • Flujo de autenticación JWT</span>
+                <span class="glitch-layer" aria-hidden="true">Sábado 27/9 • Flujo de autenticación JWT</span>
+              </h2>
+              <div class="flex flex-wrap items-center gap-3 text-xs" style="color:#64748b;">
+                <span style="color:#f59e0b;">★★☆</span>
+                <span style="color:#94a3b8;">intermedio</span>
+                <span style="color:#6b21a8;">·</span>
+                <span style="color:#a855f7;">+250 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-4 space-y-5">
+            <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+              Ordena las fases del <span style="color:#d8b4fe;">flujo de autenticación JWT</span> en el orden correcto.
+              La seguridad depende de que cada paso ocurra en la secuencia adecuada.
+            </p>
+
+            <div class="mt-4">
+              <div class="rounded-lg border grid-pattern corner-bracket"
+                   style="border-color:#6b21a8; background:#05000d; min-height:40vh;">
+                <div class="flex items-center justify-between px-4 py-2.5 border-b rounded-t-lg"
+                     style="border-color:#1a0030; background:#0a000f;">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full inline-block" style="background:#6b21a8;"></span>
+                    <span class="text-sm font-bold tracking-wide" style="color:#a855f7;">Área de Ensamblaje de Código</span>
+                  </div>
+                  <span class="px-2 py-0.5 text-xs rounded tracking-widest uppercase"
+                        style="background:#1a0030; color:#64748b; border:1px solid #334155;">puzzle activo</span>
+                </div>
+                <div id="assembly-area-sabado" class="p-4 space-y-3" role="list" aria-label="Bloques de código del puzzle Sábado"></div>
+                <div id="error-message-sabado" class="hidden mx-4 mb-2 px-4 py-2.5 rounded border text-sm font-mono"
+                     style="background:#0d0000; border-color:#7f1d1d; color:#f87171;"
+                     role="alert" aria-live="assertive"></div>
+              </div>
+              <div class="mt-4 flex justify-center">
+                <button id="validate-btn-sabado"
+                        class="px-8 py-3 rounded border font-bold text-sm tracking-widest uppercase transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        style="background:#0a000f; border-color:#6b21a8; color:#d8b4fe;"
+                        onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)'; this.style.borderColor='#a855f7';"
+                        onmouseout="this.style.boxShadow=''; this.style.borderColor='#6b21a8';">
+                  Validar Solución
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ───────────────────────────────────────────────────────
+         SUNDAY SECTION
+    ──────────────────────────────────────────────────────────── -->
+    <section id="sunday-section">
+
+      <div class="text-xs font-bold mb-3 tracking-widest" style="color:#334155;">
+        // domingo 28/9
+      </div>
+
+      <!-- Locked state -->
+      <div id="sunday-locked" class="rounded-lg border relative overflow-hidden"
+           style="border-color:#1a0030; background:#05000d; opacity:0.6;">
+        <div class="absolute inset-0 flex flex-col items-center justify-center z-10"
+             style="background:rgba(0,0,0,0.6);">
+          <div class="text-5xl mb-3" aria-hidden="true">🔒</div>
+          <div class="px-3 py-1 text-xs font-bold rounded tracking-widest uppercase mb-2"
+               style="background:#1a0030; color:#64748b; border:1px solid #334155;">BLOQUEADO</div>
+          <p class="text-sm text-center px-6" style="color:#64748b;">
+            Completa el nivel anterior para desbloquear.
+          </p>
+        </div>
+        <div class="px-5 py-4 filter blur-sm select-none" aria-hidden="true">
+          <div class="h-6 rounded mb-4" style="background:#1a0030; width:60%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:80%;"></div>
+          <div class="h-4 rounded mb-2" style="background:#0f0020; width:70%;"></div>
+          <div class="h-4 rounded mb-6" style="background:#0f0020; width:75%;"></div>
+          <div class="h-32 rounded" style="background:#0a000f;"></div>
+        </div>
+      </div>
+
+      <!-- Unlocked state -->
+      <div id="sunday-unlocked" class="hidden">
+        <div class="rounded-lg border corner-bracket" style="border-color:#6b21a8; background:#05000d;">
+
+          <div class="flex flex-wrap items-start justify-between gap-3 px-5 py-4 border-b"
+               style="border-color:#1a0030;">
+            <div class="flex-1">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#1a0030; color:#a855f7; border:1px solid #6b21a8;">SPEC</span>
+                <span class="px-2 py-0.5 text-xs font-bold rounded tracking-widest uppercase"
+                      style="background:#022c22; color:#34d399; border:1px solid #065f46;">disponible</span>
+              </div>
+              <h2 class="text-lg font-bold mb-1 glitch-wrapper" style="color:#ffffff;">
+                <span>Domingo 28/9 • Estrategia de resolución de bugs</span>
+                <span class="glitch-layer" aria-hidden="true">Domingo 28/9 • Estrategia de resolución de bugs</span>
+              </h2>
+              <div class="flex flex-wrap items-center gap-3 text-xs" style="color:#64748b;">
+                <span style="color:#f59e0b;">★★☆</span>
+                <span style="color:#94a3b8;">intermedio</span>
+                <span style="color:#6b21a8;">·</span>
+                <span style="color:#a855f7;">+250 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-5 py-4 space-y-5">
+            <p class="text-sm leading-relaxed" style="color:#94a3b8;">
+              Ordena los pasos de la <span style="color:#d8b4fe;">estrategia de resolución de bugs</span> en la secuencia correcta.
+              Un proceso metódico reduce el tiempo de diagnóstico y evita regresiones.
+            </p>
+
+            <div class="mt-4">
+              <div class="rounded-lg border grid-pattern corner-bracket"
+                   style="border-color:#6b21a8; background:#05000d; min-height:40vh;">
+                <div class="flex items-center justify-between px-4 py-2.5 border-b rounded-t-lg"
+                     style="border-color:#1a0030; background:#0a000f;">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full inline-block" style="background:#6b21a8;"></span>
+                    <span class="text-sm font-bold tracking-wide" style="color:#a855f7;">Área de Ensamblaje de Código</span>
+                  </div>
+                  <span class="px-2 py-0.5 text-xs rounded tracking-widest uppercase"
+                        style="background:#1a0030; color:#64748b; border:1px solid #334155;">puzzle activo</span>
+                </div>
+                <div id="assembly-area-domingo" class="p-4 space-y-3" role="list" aria-label="Bloques de código del puzzle Domingo"></div>
+                <div id="error-message-domingo" class="hidden mx-4 mb-2 px-4 py-2.5 rounded border text-sm font-mono"
+                     style="background:#0d0000; border-color:#7f1d1d; color:#f87171;"
+                     role="alert" aria-live="assertive"></div>
+              </div>
+              <div class="mt-4 flex justify-center">
+                <button id="validate-btn-domingo"
+                        class="px-8 py-3 rounded border font-bold text-sm tracking-widest uppercase transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        style="background:#0a000f; border-color:#6b21a8; color:#d8b4fe;"
+                        onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)'; this.style.borderColor='#a855f7';"
+                        onmouseout="this.style.boxShadow=''; this.style.borderColor='#6b21a8';">
+                  Validar Solución
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -784,6 +1261,146 @@
               onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
               onmouseout="this.style.boxShadow='';">
         Ver resumen semanal →
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       WEDNESDAY SUCCESS MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-miercoles" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-miercoles-title">
+    <div class="absolute inset-0" id="modal-miercoles-backdrop"></div>
+    <div class="relative rounded-lg border w-full max-w-md p-6 space-y-4 z-10"
+         style="background:#05000d; border-color:#6b21a8; box-shadow:0 0 40px 8px rgba(107,33,168,0.4);">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">✓</span>
+        <h3 id="modal-miercoles-title" class="text-lg font-bold tracking-widest uppercase"
+            style="color:#34d399;">SECUENCIA CORRECTA</h3>
+      </div>
+      <div class="space-y-2 text-sm" style="color:#94a3b8;">
+        <p>¡Excelente! Has ordenado correctamente el ciclo de vida del software.</p>
+        <p class="font-bold" style="color:#a855f7;">+250 créditos añadidos</p>
+      </div>
+      <button id="next-wednesday-btn"
+              class="w-full py-3 rounded border font-bold text-sm tracking-widest uppercase
+                     transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style="background:#0a000f; border-color:#a855f7; color:#d8b4fe;"
+              onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
+              onmouseout="this.style.boxShadow='';">
+        Ir al nivel del Jueves →
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THURSDAY SUCCESS MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-jueves" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-jueves-title">
+    <div class="absolute inset-0" id="modal-jueves-backdrop"></div>
+    <div class="relative rounded-lg border w-full max-w-md p-6 space-y-4 z-10"
+         style="background:#05000d; border-color:#6b21a8; box-shadow:0 0 40px 8px rgba(107,33,168,0.4);">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">✓</span>
+        <h3 id="modal-jueves-title" class="text-lg font-bold tracking-widest uppercase"
+            style="color:#34d399;">SECUENCIA CORRECTA</h3>
+      </div>
+      <div class="space-y-2 text-sm" style="color:#94a3b8;">
+        <p>¡Excelente! Has ordenado correctamente el pipeline de CI/CD.</p>
+        <p class="font-bold" style="color:#a855f7;">+250 créditos añadidos</p>
+      </div>
+      <button id="next-thursday-btn"
+              class="w-full py-3 rounded border font-bold text-sm tracking-widest uppercase
+                     transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style="background:#0a000f; border-color:#a855f7; color:#d8b4fe;"
+              onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
+              onmouseout="this.style.boxShadow='';">
+        Ir al nivel del Viernes →
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FRIDAY SUCCESS MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-viernes" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-viernes-title">
+    <div class="absolute inset-0" id="modal-viernes-backdrop"></div>
+    <div class="relative rounded-lg border w-full max-w-md p-6 space-y-4 z-10"
+         style="background:#05000d; border-color:#6b21a8; box-shadow:0 0 40px 8px rgba(107,33,168,0.4);">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">✓</span>
+        <h3 id="modal-viernes-title" class="text-lg font-bold tracking-widest uppercase"
+            style="color:#34d399;">SECUENCIA CORRECTA</h3>
+      </div>
+      <div class="space-y-2 text-sm" style="color:#94a3b8;">
+        <p>¡Excelente! Has ordenado correctamente el modelo de capas de una API REST.</p>
+        <p class="font-bold" style="color:#a855f7;">+250 créditos añadidos</p>
+      </div>
+      <button id="next-friday-btn"
+              class="w-full py-3 rounded border font-bold text-sm tracking-widest uppercase
+                     transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style="background:#0a000f; border-color:#a855f7; color:#d8b4fe;"
+              onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
+              onmouseout="this.style.boxShadow='';">
+        Ir al nivel del Sábado →
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SATURDAY SUCCESS MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-sabado" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-sabado-title">
+    <div class="absolute inset-0" id="modal-sabado-backdrop"></div>
+    <div class="relative rounded-lg border w-full max-w-md p-6 space-y-4 z-10"
+         style="background:#05000d; border-color:#6b21a8; box-shadow:0 0 40px 8px rgba(107,33,168,0.4);">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">✓</span>
+        <h3 id="modal-sabado-title" class="text-lg font-bold tracking-widest uppercase"
+            style="color:#34d399;">SECUENCIA CORRECTA</h3>
+      </div>
+      <div class="space-y-2 text-sm" style="color:#94a3b8;">
+        <p>¡Excelente! Has ordenado correctamente el flujo de autenticación JWT.</p>
+        <p class="font-bold" style="color:#a855f7;">+250 créditos añadidos</p>
+      </div>
+      <button id="next-saturday-btn"
+              class="w-full py-3 rounded border font-bold text-sm tracking-widest uppercase
+                     transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style="background:#0a000f; border-color:#a855f7; color:#d8b4fe;"
+              onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
+              onmouseout="this.style.boxShadow='';">
+        Ir al nivel del Domingo →
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SUNDAY SUCCESS MODAL
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="modal-domingo" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+       aria-labelledby="modal-domingo-title">
+    <div class="absolute inset-0" id="modal-domingo-backdrop"></div>
+    <div class="relative rounded-lg border w-full max-w-md p-6 space-y-4 z-10"
+         style="background:#05000d; border-color:#6b21a8; box-shadow:0 0 40px 8px rgba(107,33,168,0.4);">
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">🏆</span>
+        <h3 id="modal-domingo-title" class="text-lg font-bold tracking-widest uppercase"
+            style="color:#fbbf24;">SEMANA COMPLETADA</h3>
+      </div>
+      <div class="space-y-2 text-sm" style="color:#94a3b8;">
+        <p>¡Increíble! Has completado todos los retos de la semana. Has dominado los fundamentos de desarrollo de software.</p>
+        <p class="font-bold" style="color:#a855f7;">+250 créditos añadidos</p>
+      </div>
+      <button id="sunday-finish-btn"
+              class="w-full py-3 rounded border font-bold text-sm tracking-widest uppercase
+                     transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              style="background:#0a000f; border-color:#a855f7; color:#d8b4fe;"
+              onmouseover="this.style.boxShadow='0 0 14px 3px rgba(168,85,247,0.45)';"
+              onmouseout="this.style.boxShadow='';">
+        Semana completada →
       </button>
     </div>
   </div>
@@ -1371,23 +1988,856 @@
     if (summBtn) {
       summBtn.addEventListener('click', () => {
         closeModal();
-        // Show brief completion message in Tuesday section
-        const unlocked = document.getElementById('tuesday-unlocked');
+        const sec = document.getElementById('wednesday-section');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(unlockWednesday, 300);
+      });
+    }
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     WEDNESDAY PUZZLE
+  ───────────────────────────────────────────────────────────── */
+
+  const CORRECT_SEQUENCE_MIERCOLES = Object.freeze([
+    { id: 'mie-block-1', label: 'Análisis',       desc: 'Recopilar requisitos y entender el problema' },
+    { id: 'mie-block-2', label: 'Desarrollo',     desc: 'Escribir el código que implementa la solución' },
+    { id: 'mie-block-3', label: 'Pruebas',        desc: 'Verificar que el sistema cumple los requisitos' },
+    { id: 'mie-block-4', label: 'Mantenimiento',  desc: 'Corregir errores y mejorar el sistema en producción' },
+  ]);
+
+  const PuzzleState_miercoles = { blocks: [], selectedIndex: null };
+
+  function renderBlocks_miercoles() {
+    const area = document.getElementById('assembly-area-miercoles');
+    if (!area) { console.error('[Puzzle] #assembly-area-miercoles not found'); return; }
+    area.innerHTML = '';
+    PuzzleState_miercoles.blocks.forEach((block, index) => {
+      const isSelected = PuzzleState_miercoles.selectedIndex === index;
+      const div = document.createElement('div');
+      div.className = 'block-item' + (isSelected ? ' block-selected' : '');
+      div.setAttribute('data-index', index);
+      div.setAttribute('role', 'listitem');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      div.setAttribute('aria-label', `Bloque ${index + 1}: ${block.label}`);
+      div.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="min-width:28px; height:28px; border-radius:50%; background:${isSelected ? 'rgba(168,85,247,0.3)' : '#1a0030'}; border:1px solid ${isSelected ? '#a855f7' : '#6b21a8'}; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:${isSelected ? '#d8b4fe' : '#a855f7'}; flex-shrink:0; margin-top:2px;">${index + 1}</div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px; color:#ffffff; margin-bottom:4px;">${block.label}</div>
+            <div style="font-size:12px; color:#64748b;">${block.desc}</div>
+          </div>
+          ${isSelected ? '<div style="color:#a855f7; font-size:18px; align-self:center;">◈</div>' : ''}
+        </div>
+      `;
+      area.appendChild(div);
+    });
+  }
+
+  function swapBlocks_miercoles(i, j) {
+    if (i < 0 || j < 0 || i >= PuzzleState_miercoles.blocks.length || j >= PuzzleState_miercoles.blocks.length) {
+      console.error(`[Puzzle] swapBlocks_miercoles: index out of range (${i}, ${j})`);
+      return;
+    }
+    [PuzzleState_miercoles.blocks[i], PuzzleState_miercoles.blocks[j]] = [PuzzleState_miercoles.blocks[j], PuzzleState_miercoles.blocks[i]];
+    renderBlocks_miercoles();
+  }
+
+  function handleBlockClick_miercoles(index) {
+    if (PuzzleState_miercoles.selectedIndex === null) {
+      PuzzleState_miercoles.selectedIndex = index;
+      renderBlocks_miercoles();
+    } else if (PuzzleState_miercoles.selectedIndex === index) {
+      PuzzleState_miercoles.selectedIndex = null;
+      renderBlocks_miercoles();
+    } else {
+      swapBlocks_miercoles(PuzzleState_miercoles.selectedIndex, index);
+      PuzzleState_miercoles.selectedIndex = null;
+      hideError_miercoles();
+    }
+  }
+
+  function validateSolution_miercoles() {
+    return PuzzleState_miercoles.blocks.every((block, idx) => block.id === CORRECT_SEQUENCE_MIERCOLES[idx].id);
+  }
+
+  function showError_miercoles() {
+    const el = document.getElementById('error-message-miercoles');
+    if (!el) return;
+    el.textContent = 'ERROR:: Error de especificación: secuencia lógica alterada';
+    el.classList.remove('hidden');
+  }
+
+  function hideError_miercoles() {
+    const el = document.getElementById('error-message-miercoles');
+    if (el) el.classList.add('hidden');
+  }
+
+  function showSuccess_miercoles() {
+    window.gameCredits.add(CREDITS_REWARD);
+    const modal = document.getElementById('modal-miercoles');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function initPuzzle_miercoles() {
+    const area = document.getElementById('assembly-area-miercoles');
+    if (!area) { console.error('[Puzzle] #assembly-area-miercoles not found'); return; }
+    let shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_MIERCOLES));
+    let attempts = 0;
+    while (shuffled.every((b, i) => b.id === CORRECT_SEQUENCE_MIERCOLES[i].id) && attempts < 10) {
+      shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_MIERCOLES));
+      attempts++;
+    }
+    PuzzleState_miercoles.blocks = shuffled;
+    PuzzleState_miercoles.selectedIndex = null;
+    renderBlocks_miercoles();
+    area.addEventListener('click', (e) => {
+      const blockEl = e.target.closest('[data-index]');
+      if (!blockEl) return;
+      const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) handleBlockClick_miercoles(idx);
+    });
+    area.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const blockEl = e.target.closest('[data-index]');
+        if (!blockEl) return;
+        e.preventDefault();
+        const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) handleBlockClick_miercoles(idx);
+      }
+    });
+    const validateBtn = document.getElementById('validate-btn-miercoles');
+    if (validateBtn) {
+      validateBtn.addEventListener('click', () => {
+        if (validateSolution_miercoles()) { showSuccess_miercoles(); } else { showError_miercoles(); }
+      });
+    }
+    const nextBtn = document.getElementById('next-wednesday-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-miercoles');
+        if (modal) modal.classList.add('hidden');
+        const sec = document.getElementById('thursday-section');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(unlockThursday, 300);
+      });
+    }
+    const backdrop = document.getElementById('modal-miercoles-backdrop');
+    if (backdrop) backdrop.addEventListener('click', () => {
+      const modal = document.getElementById('modal-miercoles');
+      if (modal) modal.classList.add('hidden');
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     THURSDAY PUZZLE
+  ───────────────────────────────────────────────────────────── */
+
+  const CORRECT_SEQUENCE_JUEVES = Object.freeze([
+    { id: 'jue-block-1', label: 'Commit',  desc: 'Registrar los cambios en el repositorio de código' },
+    { id: 'jue-block-2', label: 'Build',   desc: 'Compilar y empaquetar la aplicación' },
+    { id: 'jue-block-3', label: 'Test',    desc: 'Ejecutar la suite de pruebas automatizadas' },
+    { id: 'jue-block-4', label: 'Deploy',  desc: 'Publicar el artefacto en el entorno de producción' },
+  ]);
+
+  const PuzzleState_jueves = { blocks: [], selectedIndex: null };
+
+  function renderBlocks_jueves() {
+    const area = document.getElementById('assembly-area-jueves');
+    if (!area) { console.error('[Puzzle] #assembly-area-jueves not found'); return; }
+    area.innerHTML = '';
+    PuzzleState_jueves.blocks.forEach((block, index) => {
+      const isSelected = PuzzleState_jueves.selectedIndex === index;
+      const div = document.createElement('div');
+      div.className = 'block-item' + (isSelected ? ' block-selected' : '');
+      div.setAttribute('data-index', index);
+      div.setAttribute('role', 'listitem');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      div.setAttribute('aria-label', `Bloque ${index + 1}: ${block.label}`);
+      div.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="min-width:28px; height:28px; border-radius:50%; background:${isSelected ? 'rgba(168,85,247,0.3)' : '#1a0030'}; border:1px solid ${isSelected ? '#a855f7' : '#6b21a8'}; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:${isSelected ? '#d8b4fe' : '#a855f7'}; flex-shrink:0; margin-top:2px;">${index + 1}</div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px; color:#ffffff; margin-bottom:4px;">${block.label}</div>
+            <div style="font-size:12px; color:#64748b;">${block.desc}</div>
+          </div>
+          ${isSelected ? '<div style="color:#a855f7; font-size:18px; align-self:center;">◈</div>' : ''}
+        </div>
+      `;
+      area.appendChild(div);
+    });
+  }
+
+  function swapBlocks_jueves(i, j) {
+    if (i < 0 || j < 0 || i >= PuzzleState_jueves.blocks.length || j >= PuzzleState_jueves.blocks.length) {
+      console.error(`[Puzzle] swapBlocks_jueves: index out of range (${i}, ${j})`);
+      return;
+    }
+    [PuzzleState_jueves.blocks[i], PuzzleState_jueves.blocks[j]] = [PuzzleState_jueves.blocks[j], PuzzleState_jueves.blocks[i]];
+    renderBlocks_jueves();
+  }
+
+  function handleBlockClick_jueves(index) {
+    if (PuzzleState_jueves.selectedIndex === null) {
+      PuzzleState_jueves.selectedIndex = index;
+      renderBlocks_jueves();
+    } else if (PuzzleState_jueves.selectedIndex === index) {
+      PuzzleState_jueves.selectedIndex = null;
+      renderBlocks_jueves();
+    } else {
+      swapBlocks_jueves(PuzzleState_jueves.selectedIndex, index);
+      PuzzleState_jueves.selectedIndex = null;
+      hideError_jueves();
+    }
+  }
+
+  function validateSolution_jueves() {
+    return PuzzleState_jueves.blocks.every((block, idx) => block.id === CORRECT_SEQUENCE_JUEVES[idx].id);
+  }
+
+  function showError_jueves() {
+    const el = document.getElementById('error-message-jueves');
+    if (!el) return;
+    el.textContent = 'ERROR:: Error de especificación: secuencia lógica alterada';
+    el.classList.remove('hidden');
+  }
+
+  function hideError_jueves() {
+    const el = document.getElementById('error-message-jueves');
+    if (el) el.classList.add('hidden');
+  }
+
+  function showSuccess_jueves() {
+    window.gameCredits.add(CREDITS_REWARD);
+    const modal = document.getElementById('modal-jueves');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function initPuzzle_jueves() {
+    const area = document.getElementById('assembly-area-jueves');
+    if (!area) { console.error('[Puzzle] #assembly-area-jueves not found'); return; }
+    let shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_JUEVES));
+    let attempts = 0;
+    while (shuffled.every((b, i) => b.id === CORRECT_SEQUENCE_JUEVES[i].id) && attempts < 10) {
+      shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_JUEVES));
+      attempts++;
+    }
+    PuzzleState_jueves.blocks = shuffled;
+    PuzzleState_jueves.selectedIndex = null;
+    renderBlocks_jueves();
+    area.addEventListener('click', (e) => {
+      const blockEl = e.target.closest('[data-index]');
+      if (!blockEl) return;
+      const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) handleBlockClick_jueves(idx);
+    });
+    area.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const blockEl = e.target.closest('[data-index]');
+        if (!blockEl) return;
+        e.preventDefault();
+        const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) handleBlockClick_jueves(idx);
+      }
+    });
+    const validateBtn = document.getElementById('validate-btn-jueves');
+    if (validateBtn) {
+      validateBtn.addEventListener('click', () => {
+        if (validateSolution_jueves()) { showSuccess_jueves(); } else { showError_jueves(); }
+      });
+    }
+    const nextBtn = document.getElementById('next-thursday-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-jueves');
+        if (modal) modal.classList.add('hidden');
+        const sec = document.getElementById('friday-section');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(unlockFriday, 300);
+      });
+    }
+    const backdrop = document.getElementById('modal-jueves-backdrop');
+    if (backdrop) backdrop.addEventListener('click', () => {
+      const modal = document.getElementById('modal-jueves');
+      if (modal) modal.classList.add('hidden');
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     FRIDAY PUZZLE
+  ───────────────────────────────────────────────────────────── */
+
+  const CORRECT_SEQUENCE_VIERNES = Object.freeze([
+    { id: 'vie-block-1', label: 'Cliente',      desc: 'Aplicación que consume la API mediante HTTP' },
+    { id: 'vie-block-2', label: 'Controlador',  desc: 'Recibe la petición y delega a la capa de servicio' },
+    { id: 'vie-block-3', label: 'Servicio',     desc: 'Contiene la lógica de negocio de la aplicación' },
+    { id: 'vie-block-4', label: 'Repositorio',  desc: 'Accede y persiste los datos en la base de datos' },
+  ]);
+
+  const PuzzleState_viernes = { blocks: [], selectedIndex: null };
+
+  function renderBlocks_viernes() {
+    const area = document.getElementById('assembly-area-viernes');
+    if (!area) { console.error('[Puzzle] #assembly-area-viernes not found'); return; }
+    area.innerHTML = '';
+    PuzzleState_viernes.blocks.forEach((block, index) => {
+      const isSelected = PuzzleState_viernes.selectedIndex === index;
+      const div = document.createElement('div');
+      div.className = 'block-item' + (isSelected ? ' block-selected' : '');
+      div.setAttribute('data-index', index);
+      div.setAttribute('role', 'listitem');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      div.setAttribute('aria-label', `Bloque ${index + 1}: ${block.label}`);
+      div.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="min-width:28px; height:28px; border-radius:50%; background:${isSelected ? 'rgba(168,85,247,0.3)' : '#1a0030'}; border:1px solid ${isSelected ? '#a855f7' : '#6b21a8'}; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:${isSelected ? '#d8b4fe' : '#a855f7'}; flex-shrink:0; margin-top:2px;">${index + 1}</div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px; color:#ffffff; margin-bottom:4px;">${block.label}</div>
+            <div style="font-size:12px; color:#64748b;">${block.desc}</div>
+          </div>
+          ${isSelected ? '<div style="color:#a855f7; font-size:18px; align-self:center;">◈</div>' : ''}
+        </div>
+      `;
+      area.appendChild(div);
+    });
+  }
+
+  function swapBlocks_viernes(i, j) {
+    if (i < 0 || j < 0 || i >= PuzzleState_viernes.blocks.length || j >= PuzzleState_viernes.blocks.length) {
+      console.error(`[Puzzle] swapBlocks_viernes: index out of range (${i}, ${j})`);
+      return;
+    }
+    [PuzzleState_viernes.blocks[i], PuzzleState_viernes.blocks[j]] = [PuzzleState_viernes.blocks[j], PuzzleState_viernes.blocks[i]];
+    renderBlocks_viernes();
+  }
+
+  function handleBlockClick_viernes(index) {
+    if (PuzzleState_viernes.selectedIndex === null) {
+      PuzzleState_viernes.selectedIndex = index;
+      renderBlocks_viernes();
+    } else if (PuzzleState_viernes.selectedIndex === index) {
+      PuzzleState_viernes.selectedIndex = null;
+      renderBlocks_viernes();
+    } else {
+      swapBlocks_viernes(PuzzleState_viernes.selectedIndex, index);
+      PuzzleState_viernes.selectedIndex = null;
+      hideError_viernes();
+    }
+  }
+
+  function validateSolution_viernes() {
+    return PuzzleState_viernes.blocks.every((block, idx) => block.id === CORRECT_SEQUENCE_VIERNES[idx].id);
+  }
+
+  function showError_viernes() {
+    const el = document.getElementById('error-message-viernes');
+    if (!el) return;
+    el.textContent = 'ERROR:: Error de especificación: secuencia lógica alterada';
+    el.classList.remove('hidden');
+  }
+
+  function hideError_viernes() {
+    const el = document.getElementById('error-message-viernes');
+    if (el) el.classList.add('hidden');
+  }
+
+  function showSuccess_viernes() {
+    window.gameCredits.add(CREDITS_REWARD);
+    const modal = document.getElementById('modal-viernes');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function initPuzzle_viernes() {
+    const area = document.getElementById('assembly-area-viernes');
+    if (!area) { console.error('[Puzzle] #assembly-area-viernes not found'); return; }
+    let shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_VIERNES));
+    let attempts = 0;
+    while (shuffled.every((b, i) => b.id === CORRECT_SEQUENCE_VIERNES[i].id) && attempts < 10) {
+      shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_VIERNES));
+      attempts++;
+    }
+    PuzzleState_viernes.blocks = shuffled;
+    PuzzleState_viernes.selectedIndex = null;
+    renderBlocks_viernes();
+    area.addEventListener('click', (e) => {
+      const blockEl = e.target.closest('[data-index]');
+      if (!blockEl) return;
+      const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) handleBlockClick_viernes(idx);
+    });
+    area.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const blockEl = e.target.closest('[data-index]');
+        if (!blockEl) return;
+        e.preventDefault();
+        const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) handleBlockClick_viernes(idx);
+      }
+    });
+    const validateBtn = document.getElementById('validate-btn-viernes');
+    if (validateBtn) {
+      validateBtn.addEventListener('click', () => {
+        if (validateSolution_viernes()) { showSuccess_viernes(); } else { showError_viernes(); }
+      });
+    }
+    const nextBtn = document.getElementById('next-friday-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-viernes');
+        if (modal) modal.classList.add('hidden');
+        const sec = document.getElementById('saturday-section');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(unlockSaturday, 300);
+      });
+    }
+    const backdrop = document.getElementById('modal-viernes-backdrop');
+    if (backdrop) backdrop.addEventListener('click', () => {
+      const modal = document.getElementById('modal-viernes');
+      if (modal) modal.classList.add('hidden');
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     SATURDAY PUZZLE
+  ───────────────────────────────────────────────────────────── */
+
+  const CORRECT_SEQUENCE_SABADO = Object.freeze([
+    { id: 'sab-block-1', label: 'Login',         desc: 'El usuario envía sus credenciales al servidor' },
+    { id: 'sab-block-2', label: 'Verificación',  desc: 'El servidor valida las credenciales contra la base de datos' },
+    { id: 'sab-block-3', label: 'Emisión',       desc: 'El servidor genera y firma el token JWT' },
+    { id: 'sab-block-4', label: 'Autorización',  desc: 'El cliente usa el token para acceder a recursos protegidos' },
+  ]);
+
+  const PuzzleState_sabado = { blocks: [], selectedIndex: null };
+
+  function renderBlocks_sabado() {
+    const area = document.getElementById('assembly-area-sabado');
+    if (!area) { console.error('[Puzzle] #assembly-area-sabado not found'); return; }
+    area.innerHTML = '';
+    PuzzleState_sabado.blocks.forEach((block, index) => {
+      const isSelected = PuzzleState_sabado.selectedIndex === index;
+      const div = document.createElement('div');
+      div.className = 'block-item' + (isSelected ? ' block-selected' : '');
+      div.setAttribute('data-index', index);
+      div.setAttribute('role', 'listitem');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      div.setAttribute('aria-label', `Bloque ${index + 1}: ${block.label}`);
+      div.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="min-width:28px; height:28px; border-radius:50%; background:${isSelected ? 'rgba(168,85,247,0.3)' : '#1a0030'}; border:1px solid ${isSelected ? '#a855f7' : '#6b21a8'}; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:${isSelected ? '#d8b4fe' : '#a855f7'}; flex-shrink:0; margin-top:2px;">${index + 1}</div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px; color:#ffffff; margin-bottom:4px;">${block.label}</div>
+            <div style="font-size:12px; color:#64748b;">${block.desc}</div>
+          </div>
+          ${isSelected ? '<div style="color:#a855f7; font-size:18px; align-self:center;">◈</div>' : ''}
+        </div>
+      `;
+      area.appendChild(div);
+    });
+  }
+
+  function swapBlocks_sabado(i, j) {
+    if (i < 0 || j < 0 || i >= PuzzleState_sabado.blocks.length || j >= PuzzleState_sabado.blocks.length) {
+      console.error(`[Puzzle] swapBlocks_sabado: index out of range (${i}, ${j})`);
+      return;
+    }
+    [PuzzleState_sabado.blocks[i], PuzzleState_sabado.blocks[j]] = [PuzzleState_sabado.blocks[j], PuzzleState_sabado.blocks[i]];
+    renderBlocks_sabado();
+  }
+
+  function handleBlockClick_sabado(index) {
+    if (PuzzleState_sabado.selectedIndex === null) {
+      PuzzleState_sabado.selectedIndex = index;
+      renderBlocks_sabado();
+    } else if (PuzzleState_sabado.selectedIndex === index) {
+      PuzzleState_sabado.selectedIndex = null;
+      renderBlocks_sabado();
+    } else {
+      swapBlocks_sabado(PuzzleState_sabado.selectedIndex, index);
+      PuzzleState_sabado.selectedIndex = null;
+      hideError_sabado();
+    }
+  }
+
+  function validateSolution_sabado() {
+    return PuzzleState_sabado.blocks.every((block, idx) => block.id === CORRECT_SEQUENCE_SABADO[idx].id);
+  }
+
+  function showError_sabado() {
+    const el = document.getElementById('error-message-sabado');
+    if (!el) return;
+    el.textContent = 'ERROR:: Error de especificación: secuencia lógica alterada';
+    el.classList.remove('hidden');
+  }
+
+  function hideError_sabado() {
+    const el = document.getElementById('error-message-sabado');
+    if (el) el.classList.add('hidden');
+  }
+
+  function showSuccess_sabado() {
+    window.gameCredits.add(CREDITS_REWARD);
+    const modal = document.getElementById('modal-sabado');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function initPuzzle_sabado() {
+    const area = document.getElementById('assembly-area-sabado');
+    if (!area) { console.error('[Puzzle] #assembly-area-sabado not found'); return; }
+    let shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_SABADO));
+    let attempts = 0;
+    while (shuffled.every((b, i) => b.id === CORRECT_SEQUENCE_SABADO[i].id) && attempts < 10) {
+      shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_SABADO));
+      attempts++;
+    }
+    PuzzleState_sabado.blocks = shuffled;
+    PuzzleState_sabado.selectedIndex = null;
+    renderBlocks_sabado();
+    area.addEventListener('click', (e) => {
+      const blockEl = e.target.closest('[data-index]');
+      if (!blockEl) return;
+      const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) handleBlockClick_sabado(idx);
+    });
+    area.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const blockEl = e.target.closest('[data-index]');
+        if (!blockEl) return;
+        e.preventDefault();
+        const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) handleBlockClick_sabado(idx);
+      }
+    });
+    const validateBtn = document.getElementById('validate-btn-sabado');
+    if (validateBtn) {
+      validateBtn.addEventListener('click', () => {
+        if (validateSolution_sabado()) { showSuccess_sabado(); } else { showError_sabado(); }
+      });
+    }
+    const nextBtn = document.getElementById('next-saturday-btn');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-sabado');
+        if (modal) modal.classList.add('hidden');
+        const sec = document.getElementById('sunday-section');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(unlockSunday, 300);
+      });
+    }
+    const backdrop = document.getElementById('modal-sabado-backdrop');
+    if (backdrop) backdrop.addEventListener('click', () => {
+      const modal = document.getElementById('modal-sabado');
+      if (modal) modal.classList.add('hidden');
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     SUNDAY PUZZLE
+  ───────────────────────────────────────────────────────────── */
+
+  const CORRECT_SEQUENCE_DOMINGO = Object.freeze([
+    { id: 'dom-block-1', label: 'Reproducción',  desc: 'Confirmar que el bug ocurre de forma consistente' },
+    { id: 'dom-block-2', label: 'Diagnóstico',   desc: 'Identificar la causa raíz del problema' },
+    { id: 'dom-block-3', label: 'Corrección',    desc: 'Implementar el fix que elimina la causa raíz' },
+    { id: 'dom-block-4', label: 'Verificación',  desc: 'Confirmar que el bug está resuelto y no hay regresiones' },
+  ]);
+
+  const PuzzleState_domingo = { blocks: [], selectedIndex: null };
+
+  function renderBlocks_domingo() {
+    const area = document.getElementById('assembly-area-domingo');
+    if (!area) { console.error('[Puzzle] #assembly-area-domingo not found'); return; }
+    area.innerHTML = '';
+    PuzzleState_domingo.blocks.forEach((block, index) => {
+      const isSelected = PuzzleState_domingo.selectedIndex === index;
+      const div = document.createElement('div');
+      div.className = 'block-item' + (isSelected ? ' block-selected' : '');
+      div.setAttribute('data-index', index);
+      div.setAttribute('role', 'listitem');
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      div.setAttribute('aria-label', `Bloque ${index + 1}: ${block.label}`);
+      div.innerHTML = `
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <div style="min-width:28px; height:28px; border-radius:50%; background:${isSelected ? 'rgba(168,85,247,0.3)' : '#1a0030'}; border:1px solid ${isSelected ? '#a855f7' : '#6b21a8'}; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:${isSelected ? '#d8b4fe' : '#a855f7'}; flex-shrink:0; margin-top:2px;">${index + 1}</div>
+          <div style="flex:1;">
+            <div style="font-weight:700; font-size:14px; color:#ffffff; margin-bottom:4px;">${block.label}</div>
+            <div style="font-size:12px; color:#64748b;">${block.desc}</div>
+          </div>
+          ${isSelected ? '<div style="color:#a855f7; font-size:18px; align-self:center;">◈</div>' : ''}
+        </div>
+      `;
+      area.appendChild(div);
+    });
+  }
+
+  function swapBlocks_domingo(i, j) {
+    if (i < 0 || j < 0 || i >= PuzzleState_domingo.blocks.length || j >= PuzzleState_domingo.blocks.length) {
+      console.error(`[Puzzle] swapBlocks_domingo: index out of range (${i}, ${j})`);
+      return;
+    }
+    [PuzzleState_domingo.blocks[i], PuzzleState_domingo.blocks[j]] = [PuzzleState_domingo.blocks[j], PuzzleState_domingo.blocks[i]];
+    renderBlocks_domingo();
+  }
+
+  function handleBlockClick_domingo(index) {
+    if (PuzzleState_domingo.selectedIndex === null) {
+      PuzzleState_domingo.selectedIndex = index;
+      renderBlocks_domingo();
+    } else if (PuzzleState_domingo.selectedIndex === index) {
+      PuzzleState_domingo.selectedIndex = null;
+      renderBlocks_domingo();
+    } else {
+      swapBlocks_domingo(PuzzleState_domingo.selectedIndex, index);
+      PuzzleState_domingo.selectedIndex = null;
+      hideError_domingo();
+    }
+  }
+
+  function validateSolution_domingo() {
+    return PuzzleState_domingo.blocks.every((block, idx) => block.id === CORRECT_SEQUENCE_DOMINGO[idx].id);
+  }
+
+  function showError_domingo() {
+    const el = document.getElementById('error-message-domingo');
+    if (!el) return;
+    el.textContent = 'ERROR:: Error de especificación: secuencia lógica alterada';
+    el.classList.remove('hidden');
+  }
+
+  function hideError_domingo() {
+    const el = document.getElementById('error-message-domingo');
+    if (el) el.classList.add('hidden');
+  }
+
+  function showSuccess_domingo() {
+    window.gameCredits.add(CREDITS_REWARD);
+    const modal = document.getElementById('modal-domingo');
+    if (modal) modal.classList.remove('hidden');
+  }
+
+  function initPuzzle_domingo() {
+    const area = document.getElementById('assembly-area-domingo');
+    if (!area) { console.error('[Puzzle] #assembly-area-domingo not found'); return; }
+    let shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_DOMINGO));
+    let attempts = 0;
+    while (shuffled.every((b, i) => b.id === CORRECT_SEQUENCE_DOMINGO[i].id) && attempts < 10) {
+      shuffled = shuffleBlocks(Array.from(CORRECT_SEQUENCE_DOMINGO));
+      attempts++;
+    }
+    PuzzleState_domingo.blocks = shuffled;
+    PuzzleState_domingo.selectedIndex = null;
+    renderBlocks_domingo();
+    area.addEventListener('click', (e) => {
+      const blockEl = e.target.closest('[data-index]');
+      if (!blockEl) return;
+      const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) handleBlockClick_domingo(idx);
+    });
+    area.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const blockEl = e.target.closest('[data-index]');
+        if (!blockEl) return;
+        e.preventDefault();
+        const idx = parseInt(blockEl.getAttribute('data-index'), 10);
+        if (!isNaN(idx)) handleBlockClick_domingo(idx);
+      }
+    });
+    const validateBtn = document.getElementById('validate-btn-domingo');
+    if (validateBtn) {
+      validateBtn.addEventListener('click', () => {
+        if (validateSolution_domingo()) { showSuccess_domingo(); } else { showError_domingo(); }
+      });
+    }
+    const finishBtn = document.getElementById('sunday-finish-btn');
+    if (finishBtn) {
+      finishBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-domingo');
+        if (modal) modal.classList.add('hidden');
+        const unlocked = document.getElementById('sunday-unlocked');
         if (unlocked) {
-          const existing = document.getElementById('tuesday-complete-msg');
+          const existing = document.getElementById('week-complete-msg');
           if (!existing) {
             const msg = document.createElement('div');
-            msg.id = 'tuesday-complete-msg';
+            msg.id = 'week-complete-msg';
             msg.className = 'mt-4 px-4 py-3 rounded border text-sm font-bold';
             msg.style.background = '#022c22';
             msg.style.borderColor = '#065f46';
             msg.style.color = '#34d399';
-            msg.textContent = '✓ Semana completada — has dominado los fundamentos de especificaciones y hooks. ¡Hasta la próxima semana!';
+            msg.textContent = '🏆 Semana completada — has dominado los fundamentos de desarrollo de software. ¡Hasta la próxima semana!';
             unlocked.appendChild(msg);
           }
         }
       });
     }
+    const backdrop = document.getElementById('modal-domingo-backdrop');
+    if (backdrop) backdrop.addEventListener('click', () => {
+      const modal = document.getElementById('modal-domingo');
+      if (modal) modal.classList.add('hidden');
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     UNLOCK FUNCTIONS — WEDNESDAY THROUGH SUNDAY
+  ───────────────────────────────────────────────────────────── */
+
+  function unlockWednesday() {
+    const locked   = document.getElementById('wednesday-locked');
+    const unlocked = document.getElementById('wednesday-unlocked');
+    if (locked)   locked.classList.add('hidden');
+    if (unlocked) unlocked.classList.remove('hidden');
+
+    const sectionLabel = document.querySelector('#wednesday-section > div:first-child');
+    if (sectionLabel) sectionLabel.style.color = '#6b21a8';
+
+    // bar-1 (MAR) → completed, bar-2 (MIÉ) → active
+    const bar1 = document.getElementById('day-bar-1');
+    const lbl1 = document.getElementById('day-label-1');
+    if (bar1) { bar1.classList.remove('active'); bar1.classList.add('completed'); }
+    if (lbl1) { lbl1.style.color = '#6b21a8'; lbl1.style.fontWeight = ''; }
+
+    const bar2 = document.getElementById('day-bar-2');
+    const lbl2 = document.getElementById('day-label-2');
+    if (bar2) { bar2.classList.add('active'); }
+    if (lbl2) { lbl2.style.color = '#a855f7'; lbl2.style.fontWeight = '700'; lbl2.style.opacity = ''; }
+
+    const stripe = document.getElementById('active-day-stripe');
+    if (stripe) {
+      const nameEl = stripe.querySelector('#active-day-name');
+      const dateEl = stripe.querySelector('#active-day-date');
+      if (nameEl) nameEl.textContent = 'MIÉRCOLES';
+      if (dateEl) dateEl.textContent = '24/9';
+    }
+
+    initPuzzle_miercoles();
+  }
+
+  function unlockThursday() {
+    const locked   = document.getElementById('thursday-locked');
+    const unlocked = document.getElementById('thursday-unlocked');
+    if (locked)   locked.classList.add('hidden');
+    if (unlocked) unlocked.classList.remove('hidden');
+
+    const sectionLabel = document.querySelector('#thursday-section > div:first-child');
+    if (sectionLabel) sectionLabel.style.color = '#6b21a8';
+
+    // bar-2 (MIÉ) → completed, bar-3 (JUE) → active
+    const bar2 = document.getElementById('day-bar-2');
+    const lbl2 = document.getElementById('day-label-2');
+    if (bar2) { bar2.classList.remove('active'); bar2.classList.add('completed'); }
+    if (lbl2) { lbl2.style.color = '#6b21a8'; lbl2.style.fontWeight = ''; }
+
+    const bar3 = document.getElementById('day-bar-3');
+    const lbl3 = document.getElementById('day-label-3');
+    if (bar3) { bar3.classList.add('active'); }
+    if (lbl3) { lbl3.style.color = '#a855f7'; lbl3.style.fontWeight = '700'; lbl3.style.opacity = ''; }
+
+    const stripe = document.getElementById('active-day-stripe');
+    if (stripe) {
+      const nameEl = stripe.querySelector('#active-day-name');
+      const dateEl = stripe.querySelector('#active-day-date');
+      if (nameEl) nameEl.textContent = 'JUEVES';
+      if (dateEl) dateEl.textContent = '25/9';
+    }
+
+    initPuzzle_jueves();
+  }
+
+  function unlockFriday() {
+    const locked   = document.getElementById('friday-locked');
+    const unlocked = document.getElementById('friday-unlocked');
+    if (locked)   locked.classList.add('hidden');
+    if (unlocked) unlocked.classList.remove('hidden');
+
+    const sectionLabel = document.querySelector('#friday-section > div:first-child');
+    if (sectionLabel) sectionLabel.style.color = '#6b21a8';
+
+    // bar-3 (JUE) → completed, bar-4 (VIE) → active
+    const bar3 = document.getElementById('day-bar-3');
+    const lbl3 = document.getElementById('day-label-3');
+    if (bar3) { bar3.classList.remove('active'); bar3.classList.add('completed'); }
+    if (lbl3) { lbl3.style.color = '#6b21a8'; lbl3.style.fontWeight = ''; }
+
+    const bar4 = document.getElementById('day-bar-4');
+    const lbl4 = document.getElementById('day-label-4');
+    if (bar4) { bar4.classList.add('active'); }
+    if (lbl4) { lbl4.style.color = '#a855f7'; lbl4.style.fontWeight = '700'; lbl4.style.opacity = ''; }
+
+    const stripe = document.getElementById('active-day-stripe');
+    if (stripe) {
+      const nameEl = stripe.querySelector('#active-day-name');
+      const dateEl = stripe.querySelector('#active-day-date');
+      if (nameEl) nameEl.textContent = 'VIERNES';
+      if (dateEl) dateEl.textContent = '26/9';
+    }
+
+    initPuzzle_viernes();
+  }
+
+  function unlockSaturday() {
+    const locked   = document.getElementById('saturday-locked');
+    const unlocked = document.getElementById('saturday-unlocked');
+    if (locked)   locked.classList.add('hidden');
+    if (unlocked) unlocked.classList.remove('hidden');
+
+    const sectionLabel = document.querySelector('#saturday-section > div:first-child');
+    if (sectionLabel) sectionLabel.style.color = '#6b21a8';
+
+    // bar-4 (VIE) → completed, bar-5 (SÁB) → active
+    const bar4 = document.getElementById('day-bar-4');
+    const lbl4 = document.getElementById('day-label-4');
+    if (bar4) { bar4.classList.remove('active'); bar4.classList.add('completed'); }
+    if (lbl4) { lbl4.style.color = '#6b21a8'; lbl4.style.fontWeight = ''; }
+
+    const bar5 = document.getElementById('day-bar-5');
+    const lbl5 = document.getElementById('day-label-5');
+    if (bar5) { bar5.classList.add('active'); }
+    if (lbl5) { lbl5.style.color = '#a855f7'; lbl5.style.fontWeight = '700'; lbl5.style.opacity = ''; }
+
+    const stripe = document.getElementById('active-day-stripe');
+    if (stripe) {
+      const nameEl = stripe.querySelector('#active-day-name');
+      const dateEl = stripe.querySelector('#active-day-date');
+      if (nameEl) nameEl.textContent = 'SÁBADO';
+      if (dateEl) dateEl.textContent = '27/9';
+    }
+
+    initPuzzle_sabado();
+  }
+
+  function unlockSunday() {
+    const locked   = document.getElementById('sunday-locked');
+    const unlocked = document.getElementById('sunday-unlocked');
+    if (locked)   locked.classList.add('hidden');
+    if (unlocked) unlocked.classList.remove('hidden');
+
+    const sectionLabel = document.querySelector('#sunday-section > div:first-child');
+    if (sectionLabel) sectionLabel.style.color = '#6b21a8';
+
+    // bar-5 (SÁB) → completed, bar-6 (DOM) → active
+    const bar5 = document.getElementById('day-bar-5');
+    const lbl5 = document.getElementById('day-label-5');
+    if (bar5) { bar5.classList.remove('active'); bar5.classList.add('completed'); }
+    if (lbl5) { lbl5.style.color = '#6b21a8'; lbl5.style.fontWeight = ''; }
+
+    const bar6 = document.getElementById('day-bar-6');
+    const lbl6 = document.getElementById('day-label-6');
+    if (bar6) { bar6.classList.add('active'); }
+    if (lbl6) { lbl6.style.color = '#a855f7'; lbl6.style.fontWeight = '700'; lbl6.style.opacity = ''; }
+
+    const stripe = document.getElementById('active-day-stripe');
+    if (stripe) {
+      const nameEl = stripe.querySelector('#active-day-name');
+      const dateEl = stripe.querySelector('#active-day-date');
+      if (nameEl) nameEl.textContent = 'DOMINGO';
+      if (dateEl) dateEl.textContent = '28/9';
+    }
+
+    initPuzzle_domingo();
   }
 
   /* ─────────────────────────────────────────────────────────────
@@ -1404,6 +2854,51 @@
       CREDITS_REWARD,
       getDayName,
       formatDate,
+    };
+    window.PuzzleModule_miercoles = {
+      shuffleBlocks,
+      validateSolution: validateSolution_miercoles,
+      swapBlocks: swapBlocks_miercoles,
+      handleBlockClick: handleBlockClick_miercoles,
+      PuzzleState: PuzzleState_miercoles,
+      CORRECT_SEQUENCE: CORRECT_SEQUENCE_MIERCOLES,
+      CREDITS_REWARD,
+    };
+    window.PuzzleModule_jueves = {
+      shuffleBlocks,
+      validateSolution: validateSolution_jueves,
+      swapBlocks: swapBlocks_jueves,
+      handleBlockClick: handleBlockClick_jueves,
+      PuzzleState: PuzzleState_jueves,
+      CORRECT_SEQUENCE: CORRECT_SEQUENCE_JUEVES,
+      CREDITS_REWARD,
+    };
+    window.PuzzleModule_viernes = {
+      shuffleBlocks,
+      validateSolution: validateSolution_viernes,
+      swapBlocks: swapBlocks_viernes,
+      handleBlockClick: handleBlockClick_viernes,
+      PuzzleState: PuzzleState_viernes,
+      CORRECT_SEQUENCE: CORRECT_SEQUENCE_VIERNES,
+      CREDITS_REWARD,
+    };
+    window.PuzzleModule_sabado = {
+      shuffleBlocks,
+      validateSolution: validateSolution_sabado,
+      swapBlocks: swapBlocks_sabado,
+      handleBlockClick: handleBlockClick_sabado,
+      PuzzleState: PuzzleState_sabado,
+      CORRECT_SEQUENCE: CORRECT_SEQUENCE_SABADO,
+      CREDITS_REWARD,
+    };
+    window.PuzzleModule_domingo = {
+      shuffleBlocks,
+      validateSolution: validateSolution_domingo,
+      swapBlocks: swapBlocks_domingo,
+      handleBlockClick: handleBlockClick_domingo,
+      PuzzleState: PuzzleState_domingo,
+      CORRECT_SEQUENCE: CORRECT_SEQUENCE_DOMINGO,
+      CREDITS_REWARD,
     };
   }
 
